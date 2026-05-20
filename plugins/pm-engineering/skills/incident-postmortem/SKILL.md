@@ -20,6 +20,8 @@ Ask the user for these if not provided:
 - **How it was resolved**
 - **Initial thoughts on root cause**
 - **Action items already identified** (optional)
+- **Responders** (who was on-call or responded — names or roles; used for the timeline, not for blame)
+- **Customer or external communications sent** (optional — any status page updates, emails, or support messages with timestamps)
 
 ## Output Format
 

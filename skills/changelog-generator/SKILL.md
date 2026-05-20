@@ -15,6 +15,8 @@ Ask for these if not provided:
 - **Release date** (or "today")
 - **Audience** (developers using an API / end users of a product / internal team — affects language)
 - **Any breaking changes** (flag these explicitly if known)
+- **Previous version behaviour** (optional — paste the previous changelog entry or describe what is changing; needed for accurate "Changed" entries)
+- **Scope** (whole product / specific package or module — e.g. "payments SDK only", "iOS app", "all services")
 
 ## Output Format
 
@@ -52,6 +54,10 @@ Follow [Keep a Changelog](https://keepachangelog.com) format:
 
 ---
 
+---
+
+> **Skill guidance — do not include the following section in the delivered changelog:**
+
 ## Formatting Rules Applied
 
 **Language:** Write for the reader, not the committer. "Add dark mode support" not "implement ThemeProvider with dark palette variant".
@@ -72,7 +78,8 @@ Follow [Keep a Changelog](https://keepachangelog.com) format:
 - [ ] Related commits are grouped into single entries (not listed individually)
 - [ ] Version and date header is correct
 - [ ] Empty sections are omitted
-- [ ] Tone is imperative mood throughout
+- [ ] No entries start with past-tense verbs (no "Added", "Fixed", "Removed" — use "Add", "Fix", "Remove")
+- [ ] Every breaking change entry includes a specific migration action (not just "update your code")
 
 ## Usage Examples
 - "Write a changelog for version [X]" + [paste commits]

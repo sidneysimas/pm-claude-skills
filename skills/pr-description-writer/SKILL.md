@@ -15,6 +15,8 @@ Ask for these if not provided:
 - **How to test it** (any specific steps a reviewer needs to verify it works)
 - **Risk level** (low / medium / high — affects how much reviewer guidance to include)
 - **PR type** (feature / bug fix / refactor / dependency upgrade / config change / hotfix)
+- **Target branch** (e.g. main / develop / release/2.4 — affects risk framing and reviewer guidance)
+- **Linked issue or ticket** (e.g. JIRA-1234, GitHub #567 — or "none")
 
 ## Output Format
 
@@ -43,7 +45,7 @@ Bullet list of specific changes — one bullet per logical change, not per file:
 ### Screenshots / Demo
 [If UI change: include before/after screenshots or a screen recording]
 [If API change: include example request/response]
-[If no visual change: this section can be omitted]
+[If no visual change and no API contract change: omit this section entirely — do not leave it as a placeholder]
 
 ### How to Test
 Step-by-step instructions a reviewer can follow:

@@ -14,6 +14,7 @@ Ask the user for these if not provided:
 - **Type of change** (feature / bug fix / refactor / dependency upgrade / security patch / performance)
 - **Risk level** (low / medium / high / critical)
 - **PR description** (paste the description or link to the PR)
+- **Code or diff** (optional — paste key changed files or a `git diff`; significantly improves checklist specificity)
 - **Author context** (new starter / experienced / external contributor)
 
 ## Output Format
@@ -22,9 +23,10 @@ Ask the user for these if not provided:
 
 # Code Review: [PR Title or Reference]
 
+### 1. PR Overview
 **Scope assessment:** [Small / Medium / Large / Too large — should be split]
 **Recommended review depth:** [Skim / Standard / Deep dive]
-**Estimated review time:** [Minutes]
+**Estimated review time:** [e.g. 20–30 min — use 5 min per 50 lines of diff as a rough guide]
 
 ### 2. Correctness Checks
 
@@ -102,7 +104,8 @@ Based on the change type and language, flag 2-3 things reviewers typically miss 
 - [ ] Checklist is tailored to the stated language (not generic)
 - [ ] Change-type-specific section is included
 - [ ] Risk-appropriate depth matches stated risk level
-- [ ] Decision framework is explicit
+- [ ] Decision framework includes at least one named blocking condition and one named non-blocking comment condition
+- [ ] Common pitfalls are specific to the stated language + change-type combo (not generic advice like "watch out for bugs")
 
 ## Usage Examples
 - "Generate a code review checklist for [PR description]"

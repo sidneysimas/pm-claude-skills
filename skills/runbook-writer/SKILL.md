@@ -15,6 +15,8 @@ Ask for these if not provided:
 - **System/service name and what it does** (brief description)
 - **Audience** (new on-call engineers / experienced SREs / DevOps team)
 - **Tech stack** (where relevant — e.g. Kubernetes, AWS RDS, Node.js)
+- **Monitoring tools** (e.g. Grafana, Datadog, CloudWatch, Splunk — used to name specific dashboards and alert links in the steps)
+- **Key environment details** (e.g. Kubernetes cluster name, AWS account/region, relevant namespaces or resource names — paste what's relevant for exact commands)
 
 ## Output Format
 
@@ -22,7 +24,7 @@ Ask for these if not provided:
 **Runbook:** [Runbook Title]
 **Service:** [Service Name]
 **Type:** [Deployment / Incident Response / Maintenance / DR]
-**Last Updated:** [Date]
+**Last Updated:** [Insert today's date in YYYY-MM-DD format]
 **Owner:** [Team or person]
 **Severity:** [P1 / P2 / P3 — if incident-type]
 
@@ -133,7 +135,8 @@ After completing the runbook:
 - [ ] Expected output is specified for each step so engineer knows if it worked
 - [ ] Failure path is explicit for each step (not "if it fails, investigate")
 - [ ] Rollback procedure is complete and independently testable
-- [ ] Escalation paths name specific contacts, not just team names
+- [ ] Escalation table has no cells containing only "[Team name]" — every row must either have a real contact or be explicitly flagged as [FILL IN: on-call rotation link]
+- [ ] Rollback section contains at least one concrete command (not left as "[rollback command]" placeholder)
 - [ ] Runbook can be followed by someone who has never touched this system
 
 ## Usage Examples

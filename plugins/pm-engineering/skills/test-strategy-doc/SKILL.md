@@ -11,7 +11,9 @@ Produces a complete test strategy from a feature spec, PRD, or system descriptio
 
 Ask for these if not provided:
 - **Feature or system being tested** (paste a spec, PRD, or describe it in plain English)
-- **Tech stack** (language, framework, testing tools already in use if known)
+- **Tech stack** (language and framework — e.g. TypeScript + React, Python + FastAPI)
+- **Existing test coverage** (e.g. "we have unit tests but no E2E tests", "we use Jest + Playwright already", or "starting from scratch")
+- **Deployment cadence** (e.g. continuous deployment / weekly releases / quarterly — affects what must be automated vs. manual)
 - **Risk level** (low / medium / high / critical — affects depth and coverage requirements)
 - **Timeline** (when does this need to ship — affects prioritisation)
 - **Team context** (who is doing the testing — developers / dedicated QA / both)
@@ -66,7 +68,7 @@ Identify the highest-risk areas first — these drive depth and coverage:
 - **Tools:** [e.g. Playwright, Cypress, Selenium]
 - **Focus areas:** [The 3–5 most critical user flows]
 
-**Performance Tests** *(include only if risk is medium+)*
+**Performance Tests** *(include if any row in the Risk Assessment table has performance as a risk factor, regardless of overall risk level)*
 - **What:** Load, stress, or latency testing
 - **Targets:** [Specific numbers — e.g. 200 req/sec at p95 < 200ms]
 - **Tools:** [e.g. k6, Locust, JMeter]
@@ -115,7 +117,8 @@ Testing is complete when:
 
 ## Quality Checks
 - [ ] Risk table is populated and drives test priority (not filled in generically)
-- [ ] P0 test cases cover the highest-risk paths specifically
+- [ ] Every "P0 — exhaustive" row in the Risk Assessment table has at least one corresponding P0 test case
+- [ ] "Out of scope" section names at least one explicit exclusion (not left blank)
 - [ ] Each test type names a concrete tool (not "some testing framework")
 - [ ] Definition of Done is measurable (not "tests are done when QA is happy")
 

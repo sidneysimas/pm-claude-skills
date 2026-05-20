@@ -12,7 +12,8 @@ Parses raw error logs, stack traces, and crash reports into a structured diagnos
 Ask for these if not provided:
 - **The log / stack trace / error output** (paste directly or describe the error)
 - **Language and framework** (e.g. Node.js + Express, Python + Django, Java Spring, Go)
-- **Context** (what the user was doing when the error occurred)
+- **Context** (what changed before this started — e.g. recent deploy, config change, increased traffic, new input data; or "nothing changed" is also useful)
+- **Frequency** (one-off / intermittent / consistent / regression after a specific change)
 - **Environment** (local dev / staging / production)
 - **What they've already tried** (if anything)
 
@@ -22,6 +23,7 @@ Ask for these if not provided:
 
 # Debugging Report: [Service/App Name]
 
+### 1. Error Classification
 **Error type:** [Runtime exception / Build error / Config error / Network error / Memory error / Unknown]
 **Severity:** [Fatal / Critical / Warning / Informational]
 **Recurrence pattern:** [One-off / Intermittent / Consistent / On-startup / Under load]
@@ -73,7 +75,8 @@ One or two concrete things that would prevent this class of error recurring:
 - [ ] Root cause is specific (not "there might be a null pointer issue")
 - [ ] At least one concrete code-level fix is suggested
 - [ ] Next steps are actionable commands, not vague advice
-- [ ] Language-specific idioms are used correctly
+- [ ] Suggested fix references the actual language/framework in the input (not a generic fix that could apply to any language)
+- [ ] Confidence level includes a stated reason (not just "High" or "Low" with no explanation)
 - [ ] Prevention is proactive (not just "add error handling")
 
 ## Usage Examples
