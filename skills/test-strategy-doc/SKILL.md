@@ -118,3 +118,10 @@ Testing is complete when:
 - [ ] P0 test cases cover the highest-risk paths specifically
 - [ ] Each test type names a concrete tool (not "some testing framework")
 - [ ] Definition of Done is measurable (not "tests are done when QA is happy")
+
+## Usage Examples
+- "Write a test strategy for [feature]" + [paste spec or PRD]
+- "Create a test plan for [system]"
+- "How should we test [feature]?"
+- "I need a QA plan for this sprint"
+- "What tests do we need for [X]?"

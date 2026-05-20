@@ -73,3 +73,10 @@ Follow [Keep a Changelog](https://keepachangelog.com) format:
 - [ ] Version and date header is correct
 - [ ] Empty sections are omitted
 - [ ] Tone is imperative mood throughout
+
+## Usage Examples
+- "Write a changelog for version [X]" + [paste commits]
+- "Generate release notes from these commits"
+- "Turn this git log into a CHANGELOG entry"
+- "Write the CHANGELOG.md update for this release"
+- "What changed in this release?" + [paste commit list]

@@ -126,3 +126,10 @@ Things to tackle in production but out of scope for this design session:
 - [ ] At least 2 component deep-dives with technology choices justified
 - [ ] Trade-offs section is honest (not just benefits of chosen approach)
 - [ ] Data flow is described end-to-end for the critical path
+
+## Usage Examples
+- "Help me answer a system design interview: [question]"
+- "Design [system] for a system design interview"
+- "How would I architect [system] at scale?"
+- "I have a system design interview — the question is [X]"
+- "Design a [URL shortener / chat system / notification service / feed]"

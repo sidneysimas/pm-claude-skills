@@ -135,3 +135,9 @@ Rules for action items:
 - [ ] Every action item has an owner and due date
 - [ ] "What went well" section is genuine, not token
 - [ ] Executive summary is readable by non-technical leadership
+
+## Usage Examples
+- "Write a postmortem for the [incident name] outage"
+- "Help me write a P1 incident report"
+- "Generate an RCA document for [service] going down on [date]"
+- "Draft a blameless postmortem from these notes: [paste notes]"

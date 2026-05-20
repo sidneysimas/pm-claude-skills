@@ -135,3 +135,10 @@ After completing the runbook:
 - [ ] Rollback procedure is complete and independently testable
 - [ ] Escalation paths name specific contacts, not just team names
 - [ ] Runbook can be followed by someone who has never touched this system
+
+## Usage Examples
+- "Write a runbook for [service] deployment"
+- "Create an incident response runbook for [alert type]"
+- "I need a runbook for [procedure]"
+- "Document the operational procedure for [X]"
+- "Write an ops playbook for [scenario]"

@@ -103,3 +103,9 @@ Based on the change type and language, flag 2-3 things reviewers typically miss 
 - [ ] Change-type-specific section is included
 - [ ] Risk-appropriate depth matches stated risk level
 - [ ] Decision framework is explicit
+
+## Usage Examples
+- "Generate a code review checklist for [PR description]"
+- "What should I check in this pull request?"
+- "Give me a code review checklist for a [language] [change type]"
+- "Review checklist for a high-risk PR in [language]"

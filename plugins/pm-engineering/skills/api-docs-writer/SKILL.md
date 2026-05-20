@@ -137,3 +137,9 @@ data = response.json()
 - [ ] Auth method is clearly stated at the top
 - [ ] Enum values are listed where applicable
 - [ ] Pagination documented if the endpoint is a list endpoint
+
+## Usage Examples
+- "Document this API endpoint: [paste spec or description]"
+- "Turn this Postman collection into developer docs"
+- "Write API reference docs for [endpoint]"
+- "Write a developer guide for our [product] API"

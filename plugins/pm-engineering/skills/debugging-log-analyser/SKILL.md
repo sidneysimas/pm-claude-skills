@@ -75,3 +75,10 @@ One or two concrete things that would prevent this class of error recurring:
 - [ ] Next steps are actionable commands, not vague advice
 - [ ] Language-specific idioms are used correctly
 - [ ] Prevention is proactive (not just "add error handling")
+
+## Usage Examples
+- "Why is this crashing?" + [paste log]
+- "Can you analyse this stack trace?"
+- "I'm getting this error, what does it mean?"
+- "Debug this log for me"
+- "What's causing this exception?"

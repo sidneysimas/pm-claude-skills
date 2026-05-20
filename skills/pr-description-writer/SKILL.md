@@ -78,3 +78,10 @@ Flag anything that warrants extra attention:
 - [ ] Changes list describes logical changes (not file-by-file changes)
 - [ ] Testing steps are reproducible by someone unfamiliar with the code
 - [ ] Risk-appropriate reviewer guidance is included
+
+## Usage Examples
+- "Write a PR description for these changes" + [paste diff or description]
+- "Draft a pull request for [feature]"
+- "I need a PR description — here's what I changed"
+- "Summarise these commits into a PR description"
+- "Write the PR body for this branch"
