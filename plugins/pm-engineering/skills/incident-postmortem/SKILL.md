@@ -5,7 +5,7 @@ description: "Write a structured incident postmortem or post-incident review. Us
 
 # Incident Postmortem Skill
 
-This skill produces a complete, blameless incident postmortem document following industry-standard format. Output is ready to share with engineering teams, leadership, and affected stakeholders.
+This skill produces a complete, blameless incident postmortem document following industry-standard format. Output enforces blameless framing throughout — system gaps over individual failures — and drives toward specific, closeable action items rather than vague process commitments.
 
 ## Required Inputs
 
@@ -20,8 +20,10 @@ Ask the user for these if not provided:
 - **How it was resolved**
 - **Initial thoughts on root cause**
 - **Action items already identified** (optional)
+- **Responders** (who was on-call or responded — names or roles; used for the timeline, not for blame)
+- **Customer or external communications sent** (optional — any status page updates, emails, or support messages with timestamps)
 
-## Output Structure
+## Output Format
 
 ---
 
@@ -131,13 +133,14 @@ Rules for action items:
 
 - [ ] Timeline has no blame-focused language
 - [ ] Root cause is specific (not "human error")
+- [ ] Root cause answers "why did this happen?" not just "what happened?" — it names a system or process gap, not a symptom
 - [ ] Contributing factors explain the systemic gaps
 - [ ] Every action item has an owner and due date
 - [ ] "What went well" section is genuine, not token
+- [ ] No action item contains vague language like "improve monitoring", "increase resilience", or "better testing" — each must name a specific change
 - [ ] Executive summary is readable by non-technical leadership
 
-## Example Trigger Phrases
-
+## Usage Examples
 - "Write a postmortem for the [incident name] outage"
 - "Help me write a P1 incident report"
 - "Generate an RCA document for [service] going down on [date]"

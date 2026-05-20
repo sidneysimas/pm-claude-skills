@@ -1,6 +1,6 @@
 ---
 name: system-design-interview
-description: "Structure a complete system design answer for interview questions or real architecture sessions. Use when asked to design a system, answer a system design interview question, or architect a solution at scale. Produces a structured answer covering requirements, capacity estimates, high-level design, component deep-dives, trade-offs, and follow-up considerations. Optimised for Opus 4.7 and newer models."
+description: "Structure a complete system design answer for interview questions or real architecture sessions. Use when asked to design a system, answer a system design interview question, or architect a solution at scale. Produces a structured answer covering requirements, capacity estimates, high-level design, component deep-dives, trade-offs, and follow-up considerations."
 ---
 
 # System Design Interview Skill
@@ -14,8 +14,10 @@ Ask for these if not provided:
 - **Scope** (interview prep / real architecture decision / practice run)
 - **Scale target** (rough numbers: DAU, requests/sec, data volume — or "assume typical web scale")
 - **Constraints or priorities** (e.g. prioritise availability over consistency, minimise cost, low-latency reads)
+- **Time available** (interview context only: 30 / 45 / 60 minutes — skip for real architecture sessions)
+- **Emphasis** (optional — any area to go deeper on, e.g. "focus on the DB design" or "spend more time on scaling")
 
-## Output Structure
+## Output Format
 
 ### 1. Clarifying Questions
 Before designing, list 4–6 questions that would change the design. Examples:
@@ -62,12 +64,7 @@ Then proceed with stated assumptions if answering an interview question.
 
 ### 5. High-Level Architecture
 
-```
-[Client] → [CDN/Edge] → [Load Balancer] → [API Servers] → [Cache] → [DB]
-                                                         → [Message Queue] → [Workers]
-```
-
-Describe each layer in 1–2 sentences explaining its role and technology choice.
+Draw an ASCII diagram specific to this system. Do not default to the client→CDN→LB→API→Cache→DB template unless it genuinely applies. Label each component with the specific technology chosen (e.g. "Kafka" not "Message Queue", "PostgreSQL" not "DB"). Describe each component in 1–2 sentences explaining its role and why that technology was chosen.
 
 ### 6. Component Deep-Dive
 
@@ -122,12 +119,13 @@ Things to tackle in production but out of scope for this design session:
 
 ## Quality Checks
 - [ ] Clarifying questions are design-changing (not generic filler)
-- [ ] Capacity estimates use real numbers (not just "it scales")
+- [ ] Capacity estimates show the arithmetic: DAU → requests/day → requests/sec → storage per record → total storage, so the numbers can be sanity-checked
+- [ ] Every row in the Trade-offs table has a non-empty Trade-off column (no rows where the trade-off is blank or says "none")
 - [ ] At least 2 component deep-dives with technology choices justified
 - [ ] Trade-offs section is honest (not just benefits of chosen approach)
 - [ ] Data flow is described end-to-end for the critical path
 
-## Example Trigger Phrases
+## Usage Examples
 - "Help me answer a system design interview: [question]"
 - "Design [system] for a system design interview"
 - "How would I architect [system] at scale?"

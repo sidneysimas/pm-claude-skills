@@ -1,6 +1,6 @@
 ---
 name: pr-description-writer
-description: "Write a clear, structured pull request description from a git diff, branch summary, or commit list. Use when asked to write a PR description, draft a pull request, or document code changes. Produces a description with summary, motivation, changes made, testing steps, and reviewer guidance. Optimised for Opus 4.7 and newer models."
+description: "Write a clear, structured pull request description from a git diff, branch summary, or commit list. Use when asked to write a PR description, draft a pull request, or document code changes. Produces a description with summary, motivation, changes made, testing steps, and reviewer guidance."
 ---
 
 # PR Description Writer Skill
@@ -15,8 +15,10 @@ Ask for these if not provided:
 - **How to test it** (any specific steps a reviewer needs to verify it works)
 - **Risk level** (low / medium / high — affects how much reviewer guidance to include)
 - **PR type** (feature / bug fix / refactor / dependency upgrade / config change / hotfix)
+- **Target branch** (e.g. main / develop / release/2.4 — affects risk framing and reviewer guidance)
+- **Linked issue or ticket** (e.g. JIRA-1234, GitHub #567 — or "none")
 
-## Output Structure
+## Output Format
 
 ### Title
 A clear, imperative-mood title under 72 characters:
@@ -43,7 +45,7 @@ Bullet list of specific changes — one bullet per logical change, not per file:
 ### Screenshots / Demo
 [If UI change: include before/after screenshots or a screen recording]
 [If API change: include example request/response]
-[If no visual change: this section can be omitted]
+[If no visual change and no API contract change: omit this section entirely — do not leave it as a placeholder]
 
 ### How to Test
 Step-by-step instructions a reviewer can follow:
@@ -76,10 +78,11 @@ Flag anything that warrants extra attention:
 - [ ] Title is imperative mood and under 72 characters
 - [ ] Summary explains what AND why (not just what)
 - [ ] Changes list describes logical changes (not file-by-file changes)
+- [ ] Title starts with a valid type prefix (feat / fix / refactor / chore / deps / config / hotfix) and is under 72 characters
 - [ ] Testing steps are reproducible by someone unfamiliar with the code
-- [ ] Risk-appropriate reviewer guidance is included
+- [ ] For high-risk PRs, Reviewer Notes flags at least one specific area of concern or deliberate trade-off; for low-risk PRs, Reviewer Notes is either omitted or kept to one line
 
-## Example Trigger Phrases
+## Usage Examples
 - "Write a PR description for these changes" + [paste diff or description]
 - "Draft a pull request for [feature]"
 - "I need a PR description — here's what I changed"
