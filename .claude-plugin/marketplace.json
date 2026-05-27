@@ -1,8 +1,8 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "pm-claude-skills",
-  "version": "12.0.0",
-  "description": "PM stands for Professional, not just Product Management. 150 Claude Skills + 4 agent templates across 23 bundles covering 16 professions — engineering, customer success, legal, finance, HR, sales, design, Figma, marketing, and more. Built by a PM, used by everyone. Building blocks for the Anthropic agent template architecture.",
+  "version": "13.0.0",
+  "description": "PM stands for Professional, not just Product Management. 155 Claude Skills + 4 agent templates across 24 bundles covering 17 professions — engineering, customer success, legal, finance, HR, sales, design, Figma, marketing, social media, and more. Built by a PM, used by everyone. Building blocks for the Anthropic agent template architecture.",
   "owner": {
     "name": "Mohit Aggarwal",
     "email": "mohit15856@gmail.com"
@@ -190,6 +190,14 @@
       "version": "1.1.0",
       "category": "productivity",
       "source": "./plugins/pm-figma",
+      "homepage": "https://github.com/mohitagw15856/pm-claude-skills"
+    },
+    {
+      "name": "pm-social",
+      "description": "Social Media skills: Social Media Audit, Influencer Brief, Community Management Playbook, Social Ad Campaign, Viral Content Framework. Score your social presence, brief influencer partnerships, manage communities at scale, plan paid social campaigns with full ad copy, and build a repeatable system for shareable content.",
+      "version": "1.0.0",
+      "category": "productivity",
+      "source": "./plugins/pm-social",
       "homepage": "https://github.com/mohitagw15856/pm-claude-skills"
     }
   ]

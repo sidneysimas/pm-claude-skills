@@ -1,18 +1,18 @@
-# 🧠 PM Claude Skills — 150 Skills for Every Profession
+# 🧠 PM Claude Skills — 155 Skills for Every Profession
 
 [![Stars](https://img.shields.io/github/stars/mohitagw15856/pm-claude-skills?style=social)](https://github.com/mohitagw15856/pm-claude-skills/stargazers)
-[![Skills](https://img.shields.io/badge/skills-150-blue)](https://github.com/mohitagw15856/pm-claude-skills)
-[![Version](https://img.shields.io/badge/version-12.0.0-brightgreen)](https://github.com/mohitagw15856/pm-claude-skills/releases)
+[![Skills](https://img.shields.io/badge/skills-155-blue)](https://github.com/mohitagw15856/pm-claude-skills)
+[![Version](https://img.shields.io/badge/version-13.0.0-brightgreen)](https://github.com/mohitagw15856/pm-claude-skills/releases)
 [![Install](https://img.shields.io/badge/Install%20in%20Claude%20Code-2%20minutes-orange)](https://github.com/mohitagw15856/pm-claude-skills#-quick-install-2-minutes)
 [![License](https://img.shields.io/badge/license-MIT-lightgrey)](LICENSE)
 [![Sponsor](https://img.shields.io/badge/sponsor-❤️-ff69b4)](https://github.com/sponsors/mohitagw15856)
 
 > **PM stands for Professional, not just Product Management.**
-> 150 Claude Skills + 4 agent templates across 16 professions. Built by a PM, used by everyone.
+> 155 Claude Skills + 4 agent templates across 24 bundles covering 17 professions. Built by a PM, used by everyone.
 
-A community-built library of Claude Skills for professionals across every field — product management, engineering, customer success, marketing, design, legal, finance, HR, sales, operations, research, and more. Each skill is a structured SKILL.md file that teaches Claude how to produce professional-grade outputs for your specific workflows.
+A community-built library of Claude Skills for professionals across every field — product management, engineering, customer success, marketing, social media, design, legal, finance, HR, sales, operations, research, and more. Each skill is a structured SKILL.md file that teaches Claude how to produce professional-grade outputs for your specific workflows.
 
-**🆕 Latest release (v12.0.0):** 150-skill milestone — 15 new skills across 10 bundles. From cohort analysis and data pipeline specs to renewal playbooks, team health checks, RACI matrices, social media strategy, and an AI ethics review framework.
+**🆕 Latest release (v13.0.0):** Social Media profession added — 5 new skills for social media managers, content creators, and growth marketers. Audit your social presence, brief influencer partnerships, manage communities at scale, plan paid social campaigns, and build a viral content system.
 ---
 
 ## 🚀 Quick Install (2 minutes)
@@ -49,6 +49,8 @@ claude plugin install pm-cross@pm-claude-skills          # Cross-profession
 
 claude plugin install pm-figma@pm-claude-skills          # Figma
 
+claude plugin install pm-social@pm-claude-skills         # Social Media 🆕
+
 
 Or clone and symlink for auto-updates:
 
@@ -74,7 +76,7 @@ ln -s ~/pm-claude-skills/skills/* ~/.claude/skills/
 
 On May 5, 2026, Anthropic [released their first agent templates](https://www.anthropic.com/news/finance-agents) — pre-packaged Claude agents that combine **skills, connectors, and subagents** into ready-to-run workflows for financial services.
 
-This library is the largest open-source collection of professional skills available — covering 15 professions beyond financial services. **The 150 skills here are the building blocks for agent templates outside of finance.**
+This library is the largest open-source collection of professional skills available — covering 16 professions beyond financial services. **The 155 skills here are the building blocks for agent templates outside of finance.**
 
 ### What is an agent template?
 
@@ -148,6 +150,27 @@ It combines four skills, two connectors, and two subagents into a single workflo
 Documentation, working orchestration script, and example outputs are included in the template folder.
 
 More templates will follow. If you want to contribute one, see the [template contribution guide](./templates/CONTRIBUTING.md).
+
+---
+
+## 🆕 What's New in v13.0.0 — Social Media Profession
+
+**5 new skills — a complete Social Media profession bundle:**
+
+| Skill | Bundle | What It Does |
+|---|---|---|
+| **Social Media Audit** 🆕 | pm-social | Scored audit across all platforms — profile completeness, content performance, competitive benchmarking, and a prioritised action plan |
+| **Influencer Brief** 🆕 | pm-social | Complete creator partnership brief with deliverables, creative guidelines, approval workflow, commercial terms, and campaign measurement |
+| **Community Management Playbook** 🆕 | pm-social | Response frameworks, moderation rules, escalation tiers, DM templates, tone-of-voice guidance, and community health metrics |
+| **Social Ad Campaign** 🆕 | pm-social | Full-funnel paid social campaign plan with audience targeting, ad set architecture, copy for every format (video, static, carousel, lead gen), budget allocation, and A/B testing plan |
+| **Viral Content Framework** 🆕 | pm-social | Psychology of sharing, 6 proven hook formulas, 5 content structures, platform-specific playbooks for LinkedIn/TikTok/Instagram/X/YouTube, and a repeatable content testing system |
+
+The library now includes **155 skills** across **17 professions** + 4 working agent templates.
+
+Install the new bundle:
+
+claude plugin install pm-social@pm-claude-skills
+
 
 ---
 
@@ -258,7 +281,7 @@ This repo was built alongside a published article series. Read the full story:
 
 ---
 
-## 🗂️ All 150 Skills
+## 🗂️ All 155 Skills
 
 ### 🛠️ Product Management (Skills 1–37)
 **Bundles:** `pm-essentials` · `pm-discovery` · `pm-planning` · `pm-delivery` · `pm-analytics` · `pm-strategy` · `pm-advanced` · `pm-rituals`
@@ -532,9 +555,28 @@ claude plugin install pm-figma@pm-claude-skills
 
 ---
 
+### 📱 Social Media (Skills 151–155)
+**Bundle:** `pm-social`
+
+> Install:
+
+```
+claude plugin install pm-social@pm-claude-skills
+```
+
+| # | Skill | Folder | What It Does |
+|---|---|---|---|
+| 151 | **Social Media Audit** 🆕 | `skills/social-media-audit/` | Scored audit across all platforms — profile completeness, content performance, competitive benchmarking, and a prioritised action plan with 30-day quick wins |
+| 152 | **Influencer Brief** 🆕 | `skills/influencer-brief/` | Complete creator partnership brief with deliverables spec, creative guidelines, key messages, approval workflow, commercial terms, and campaign measurement |
+| 153 | **Community Management Playbook** 🆕 | `skills/community-management-playbook/` | Response frameworks, moderation rules, escalation tiers, DM templates, tone-of-voice guidance, platform-specific notes, and community health metrics |
+| 154 | **Social Ad Campaign** 🆕 | `skills/social-ad-campaign/` | Full-funnel paid social plan with audience targeting, ad set architecture, copy for every format (video, static, carousel, lead gen), budget allocation, bidding strategy, and A/B testing plan |
+| 155 | **Viral Content Framework** 🆕 | `skills/viral-content-framework/` | Psychology of sharing, 6 proven hook formulas, 5 content structures, platform-specific playbooks for LinkedIn/TikTok/Instagram/X/YouTube, and a repeatable content testing system |
+
+---
+
 ## ❤️ Sponsor This Work
 
-Building and maintaining 150 skills across 23 bundles takes real time — testing skills against new model releases, building new ones from community requests, writing the article series, and keeping documentation current.
+Building and maintaining 155 skills across 24 bundles takes real time — testing skills against new model releases, building new ones from community requests, writing the article series, and keeping documentation current.
 
 If these skills save you time at work, consider sponsoring:
 
@@ -625,7 +667,7 @@ claude plugin install pm-gtm@pm-claude-skills
 
 claude plugin install pm-engineering@pm-claude-skills    # Engineering (35 skills)
 
-claude plugin install pm-cs@pm-claude-skills             # Customer Success (4 skills) 🆕
+claude plugin install pm-cs@pm-claude-skills             # Customer Success
 
 claude plugin install pm-data@pm-claude-skills
 
@@ -651,6 +693,8 @@ claude plugin install pm-cross@pm-claude-skills
 
 claude plugin install pm-figma@pm-claude-skills
 
+claude plugin install pm-social@pm-claude-skills         # Social Media 🆕
+
 ---
 
 ## 🤖 Companion Repository — ChatGPT Custom GPTs
@@ -665,7 +709,7 @@ Read the full breakdown: [Part 12 — I Built the Same Skills Library for ChatGP
 
 ## 🛠️ Custom Skills for Your Team
 
-The 114 skills in this library are built for general professional workflows. But the most powerful version of Claude Skills is one built specifically for *your* team — your templates, your terminology, your processes, your quality standards.
+The 155 skills in this library are built for general professional workflows. But the most powerful version of Claude Skills is one built specifically for *your* team — your templates, your terminology, your processes, your quality standards.
 
 **What custom skills look like in practice:**
 
