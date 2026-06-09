@@ -170,7 +170,7 @@ async function run() {
       },
       body: JSON.stringify({
         model: el('model').value,
-        max_tokens: 4096,
+        max_tokens: 8192,
         stream: true,
         system,
         messages: [{ role: 'user', content: userMessage }],
@@ -193,15 +193,18 @@ async function run() {
         if (!line.startsWith('data:')) continue;
         const payload = line.slice(5).trim();
         if (!payload || payload === '[DONE]') continue;
+        let evt;
         try {
-          const evt = JSON.parse(payload);
-          if (evt.type === 'content_block_delta' && evt.delta && evt.delta.text) {
-            acc += evt.delta.text;
-            renderMarkdown(out, acc, true);
-          } else if (evt.type === 'error') {
-            throw new Error(evt.error ? evt.error.message : 'stream error');
-          }
-        } catch (_) { /* ignore partial */ }
+          evt = JSON.parse(payload);
+        } catch (_) {
+          continue; // skip an unparseable / partial SSE line
+        }
+        if (evt.type === 'content_block_delta' && evt.delta && evt.delta.text) {
+          acc += evt.delta.text;
+          renderMarkdown(out, acc, true);
+        } else if (evt.type === 'error') {
+          throw new Error(evt.error ? evt.error.message : 'Stream error from the API.');
+        }
       }
     }
     renderMarkdown(out, acc, false);
