@@ -33,6 +33,15 @@ each new wave of skills bumps the **major** version, extensions and fixes bump
   strongest work.
 - **Cross-tool compatibility** — README now documents which platforms the skills work
   on (Claude Code natively; the SKILL.md bodies port to other agents and chat LLMs).
+- **Skill Playground upgrades** — the hosted web app gains a **tier filter** and per-tile
+  tier badges, plus a *"Use this skill in another tool"* panel that copies the
+  instructions formatted for ChatGPT, Gemini, or raw. Tier data comes from a single
+  machine-readable source, `skill-tiers.json`.
+
+### Fixed
+- **`web/skills.json` is now deterministic.** Removed the wall-clock `generatedAt` field
+  (it was unused by the UI and made every rebuild differ), so the new `check-generated`
+  CI step can reliably verify the index is in sync with the source skills.
 - **Related Projects** — README section linking to other community Claude Skills
   libraries and the `awesome-claude-skills` / `awesome-claude-code` lists.
 
