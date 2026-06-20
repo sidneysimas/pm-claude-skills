@@ -39,11 +39,14 @@ const html = `<!DOCTYPE html>
 <title>Skill Leaderboard — how pm-claude-skills score across Claude models</title>
 <meta name="description" content="LLM-judged quality scores for professional Agent Skills across Claude models, on structure, completeness, usefulness, and grounding." />
 <style>
-  :root{--bg:#0f1115;--panel:#161a21;--border:#2a313c;--text:#e7ebf0;--muted:#95a0b0;--accent2:#e89b82}
+  :root{--bg:#0f1115;--panel:#161a21;--panel2:#1d222b;--border:#2a313c;--text:#e7ebf0;--muted:#95a0b0;--accent2:#e89b82}
   body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
   a{color:var(--accent2)} header{padding:28px 22px;border-bottom:1px solid var(--border);background:var(--panel)}
   header h1{margin:0 0 6px;font-size:23px} header p{margin:0;color:var(--muted);font-size:14px}
-  .nav{margin-top:12px;display:flex;gap:14px;font-size:13px;flex-wrap:wrap}
+  .toolbar-nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;padding:12px 22px;background:rgba(13,15,20,.7);border-bottom:1px solid var(--border)}
+  .toolbar-nav .tool{font-size:13px;font-weight:600;text-decoration:none;padding:7px 14px;border-radius:99px;color:var(--muted);border:1px solid transparent;white-space:nowrap;transition:color .12s,background .12s,border-color .12s}
+  .toolbar-nav .tool:hover{color:var(--text);background:var(--panel2);border-color:var(--border)}
+  .toolbar-nav .tool.active{background:linear-gradient(135deg,#e0855f,#d9605a);color:#1a1207;border-color:transparent}
   main{max-width:900px;margin:0 auto;padding:22px}
   .banner{background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.4);color:#fcd34d;padding:12px 14px;border-radius:10px;margin-bottom:18px;font-size:13.5px}
   table{width:100%;border-collapse:collapse;font-size:14px}
@@ -57,8 +60,17 @@ const html = `<!DOCTYPE html>
 <header>
   <h1>🏆 Skill Leaderboard</h1>
   <p>LLM-judged quality (1–5) for each skill across Claude models — scored on structure, completeness, usefulness &amp; grounding by <code>${esc(data.judge || 'an LLM judge')}</code>.</p>
-  <div class="nav"><a href="https://mohitagw15856.github.io/pm-claude-skills/">Playground</a><a href="catalog.html">Catalog</a><a href="${REPO}/tree/main/evals">How it works</a></div>
 </header>
+<nav class="toolbar-nav" aria-label="Tools">
+  <a class="tool" href="index.html">▶ Playground</a>
+  <a class="tool" href="canvas.html">🧩 Workflow Canvas</a>
+  <a class="tool" href="grade.html">📝 Grade your work</a>
+  <a class="tool" href="examples.html">📄 Sample outputs</a>
+  <a class="tool" href="benchmark.html">🏆 Benchmark</a>
+  <a class="tool" href="community.html">💬 Community</a>
+  <a class="tool active" href="leaderboard.html">📊 Leaderboard</a>
+  <a class="tool" href="catalog.html">📚 Catalog</a>
+</nav>
 <main>
   ${isExample ? '<div class="banner">⚠️ <strong>Example data</strong> — illustrative scores so this page renders. Run <code>ANTHROPIC_API_KEY=… node evals/run-evals.mjs</code> then <code>node scripts/build-leaderboard.mjs</code> for real numbers.</div>' : ''}
   <table>

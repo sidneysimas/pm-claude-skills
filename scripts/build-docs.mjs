@@ -64,7 +64,10 @@ const html = `<!DOCTYPE html>
   a{color:var(--accent2);text-decoration:none}a:hover{text-decoration:underline}
   header{padding:28px 22px;border-bottom:1px solid var(--border);background:var(--panel)}
   header h1{margin:0 0 6px;font-size:24px}header p{margin:0;color:var(--muted);font-size:14px}
-  .nav{margin-top:12px;display:flex;gap:14px;flex-wrap:wrap;font-size:13px}
+  .toolbar-nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;padding:12px 22px;background:rgba(13,15,20,.7);border-bottom:1px solid var(--border)}
+  .toolbar-nav .tool{font-size:13px;font-weight:600;text-decoration:none;padding:7px 14px;border-radius:99px;color:var(--muted);border:1px solid transparent;white-space:nowrap;transition:color .12s,background .12s,border-color .12s}
+  .toolbar-nav .tool:hover{color:var(--text);background:var(--panel2);border-color:var(--border)}
+  .toolbar-nav .tool.active{background:linear-gradient(135deg,#e0855f,#d9605a);color:#1a1207;border-color:transparent}
   .controls{position:sticky;top:0;z-index:5;background:var(--bg);padding:14px 22px;border-bottom:1px solid var(--border)}
   .controls input{width:100%;max-width:520px;padding:10px 12px;background:var(--panel2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:14px}
   main{max-width:1100px;margin:0 auto;padding:8px 22px 60px}
@@ -87,14 +90,17 @@ const html = `<!DOCTYPE html>
 <header>
   <h1>🧠 Skill Catalog — ${skills.length} professional Agent Skills</h1>
   <p>Structured <code>SKILL.md</code> skills for Claude, ChatGPT, Gemini, Cursor, Codex &amp; Hermes. Install all with <code>npx pm-claude-skills add --agent &lt;tool&gt;</code>.</p>
-  <div class="nav">
-    <a href="https://mohitagw15856.github.io/pm-claude-skills/">▶ Live Playground</a>
-    <a href="${REPO}">GitHub</a>
-    <a href="${REPO}#-quick-install-2-minutes">Install</a>
-    <a href="leaderboard.html">Leaderboard</a>
-    <a href="${REPO}/blob/main/TIERS.md">Tiers</a>
-  </div>
 </header>
+<nav class="toolbar-nav" aria-label="Tools">
+  <a class="tool" href="index.html">▶ Playground</a>
+  <a class="tool" href="canvas.html">🧩 Workflow Canvas</a>
+  <a class="tool" href="grade.html">📝 Grade your work</a>
+  <a class="tool" href="examples.html">📄 Sample outputs</a>
+  <a class="tool" href="benchmark.html">🏆 Benchmark</a>
+  <a class="tool" href="community.html">💬 Community</a>
+  <a class="tool" href="leaderboard.html">📊 Leaderboard</a>
+  <a class="tool active" href="catalog.html">📚 Catalog</a>
+</nav>
 <div class="controls"><input id="q" type="search" placeholder="Filter ${skills.length} skills…" oninput="filter()" /></div>
 <main id="main">
 ${sections}
