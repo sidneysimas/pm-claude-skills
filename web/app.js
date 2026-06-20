@@ -102,14 +102,7 @@ async function init() {
   el('recommendInput').addEventListener('input', renderRecommendations);
   el('shareBtn').addEventListener('click', shareSkill);
 
-  // Theme toggle (saved theme is applied early by nav.js).
-  syncThemeIcon();
-  el('themeToggle').addEventListener('click', () => {
-    const next = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
-    document.documentElement.dataset.theme = next;
-    try { localStorage.setItem(THEME_STORE, next); } catch (e) {}
-    syncThemeIcon();
-  });
+  // Theme is applied + toggled by nav.js (shared across all pages).
 
   // ⌘K command palette.
   el('cmdkBtn').addEventListener('click', openCmdk);
@@ -151,11 +144,6 @@ async function init() {
   applyShareLink(); // open a skill (and prefill inputs) if the URL points to one
   initOnboarding();
   initHero();
-}
-
-// ---------- Theme ----------
-function syncThemeIcon() {
-  el('themeToggle').textContent = document.documentElement.dataset.theme === 'light' ? '☀️' : '🌙';
 }
 
 // ---------- Hero (stats count-up + show/hide) ----------
