@@ -105,7 +105,9 @@ Individual skills are great. **Chaining** them is the superpower. A *recipe* run
 
 → Full detail and how to add your own in [**WORKFLOWS.md**](WORKFLOWS.md). Recipes run as slash commands in Claude Code, or over MCP via the `get_workflow` tool.
 
-**Or build your own visually.** The [**Workflow Canvas**](https://mohitagw15856.github.io/pm-claude-skills/canvas.html) lets you drag any skills into a custom chain and run it in the browser — each step's output feeds the next. Like n8n, but for professional thinking. Don't know which skills to use? The [**✨ Auto-Agent**](https://mohitagw15856.github.io/pm-claude-skills/agent.html) takes a plain-English goal, picks the right skills, and runs the chain for you.
+**Or build your own visually.** The [**Workflow Canvas**](https://mohitagw15856.github.io/pm-claude-skills/canvas.html) lets you drag any skills into a custom chain and run it in the browser — each step's output feeds the next. Like n8n, but for professional thinking. Don't know which skills to use? The [**✨ Auto-Agent**](https://mohitagw15856.github.io/pm-claude-skills/agent.html) takes a plain-English goal, **plans which skills to chain**, and runs them for you — each step feeding the next:
+
+[![Auto-Agent — a goal becomes a planned chain of skills that runs end to end](web/docs-assets/agent-demo.gif)](https://mohitagw15856.github.io/pm-claude-skills/agent.html)
 
 [![Workflow Canvas — drag skills into a chain and run it, each step feeding the next](web/docs-assets/canvas-demo.gif)](https://mohitagw15856.github.io/pm-claude-skills/canvas.html)
 
