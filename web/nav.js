@@ -26,4 +26,17 @@
     var active = t[0] === file ? ' active' : '';
     return '<a class="tool' + active + '" href="' + t[0] + '">' + t[1] + '</a>';
   }).join('');
+
+  // Theme toggle — rendered on every page so it works site-wide.
+  var t = document.createElement('button');
+  t.type = 'button'; t.className = 'tool theme-pill'; t.title = 'Toggle light / dark';
+  var setIcon = function () { t.textContent = document.documentElement.dataset.theme === 'light' ? '☀️' : '🌙'; };
+  setIcon();
+  t.addEventListener('click', function () {
+    var next = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem('pm_theme', next); } catch (e) {}
+    setIcon();
+  });
+  nav.appendChild(t);
 })();
