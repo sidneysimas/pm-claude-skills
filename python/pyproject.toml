@@ -1,0 +1,32 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pm-skills"
+version = "0.1.0"
+description = "205 professional Agent Skills (PRDs, launch plans, postmortems, rubrics, contracts…) as importable building blocks for Python AI agents — LangChain, CrewAI, LlamaIndex, or any framework."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Mohit Aggarwal" }]
+requires-python = ">=3.9"
+keywords = ["agent-skills", "llm", "langchain", "crewai", "prompts", "ai-agents", "mcp"]
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[project.urls]
+Homepage = "https://github.com/mohitagw15856/pm-claude-skills"
+Playground = "https://mohitagw15856.github.io/pm-claude-skills/"
+
+[project.optional-dependencies]
+langchain = ["langchain-core>=0.2"]
+crewai = ["crewai>=0.40"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["pm_skills"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"pm_skills/skills.json" = "pm_skills/skills.json"

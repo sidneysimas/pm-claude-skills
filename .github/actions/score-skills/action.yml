@@ -1,0 +1,44 @@
+name: 'Score Agent Skills'
+description: 'Score SKILL.md files 1–5 (structure/completeness/usefulness/grounding) with an LLM judge. Gate skill quality in CI.'
+branding:
+  icon: 'award'
+  color: 'orange'
+inputs:
+  anthropic-api-key:
+    description: 'Anthropic API key (store as a secret).'
+    required: true
+  path:
+    description: 'Directory to scan for SKILL.md files.'
+    required: false
+    default: 'skills'
+  model:
+    description: 'Model that runs each skill.'
+    required: false
+    default: 'claude-haiku-4-5-20251001'
+  judge:
+    description: 'Model that scores the output.'
+    required: false
+    default: 'claude-haiku-4-5-20251001'
+  min-score:
+    description: 'Fail the job if any skill scores below this (0 = never fail).'
+    required: false
+    default: '0'
+  max-skills:
+    description: 'Cap how many skills to score (0 = all).'
+    required: false
+    default: '0'
+runs:
+  using: 'composite'
+  steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+    - shell: bash
+      env:
+        ANTHROPIC_API_KEY: ${{ inputs.anthropic-api-key }}
+        SKILLS_PATH: ${{ inputs.path }}
+        MODEL: ${{ inputs.model }}
+        JUDGE: ${{ inputs.judge }}
+        MIN_SCORE: ${{ inputs.min-score }}
+        MAX_SKILLS: ${{ inputs.max-skills }}
+      run: node "${{ github.action_path }}/score-skills.mjs"

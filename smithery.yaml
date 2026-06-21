@@ -1,0 +1,7 @@
+# Smithery config — lets smithery.ai index & launch the pm-skills MCP server.
+# Docs: https://smithery.ai/docs
+startCommand:
+  type: stdio
+  configSchema: {}
+  commandFunction: |-
+    () => ({ command: 'npx', args: ['-y', 'pm-claude-skills-mcp'] })
