@@ -621,7 +621,7 @@ This repo was built alongside a published 16-part article series on Medium.
 
 ## 🏷️ Skill Tiers — Start With the Strongest
 
-A 170+ skill library doesn't have 170 equally-mature skills, and pretending otherwise
+A 180-skill library doesn't have 180 equally-mature skills, and pretending otherwise
 wastes your time. Skills are tiered honestly so you can start with the best work:
 
 - 🟢 **Production-Ready (47)** — battle-tested, stable output, used in real work. Includes the three skills with computed Python helpers (sprint planning, RICE, customer health). **Start here.**
