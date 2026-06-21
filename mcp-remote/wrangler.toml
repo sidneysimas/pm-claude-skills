@@ -1,0 +1,7 @@
+name = "pm-skills-mcp"
+main = "src/index.js"
+compatibility_date = "2025-01-01"
+
+# Deploy with:  npx wrangler deploy
+# After deploy, Wrangler prints your URL (e.g. https://pm-skills-mcp.<you>.workers.dev).
+# Add that URL as an MCP / connector endpoint in ChatGPT, Claude.ai, or Cursor.
