@@ -19,6 +19,7 @@
 [![PyPI](https://img.shields.io/pypi/v/pm-skills?logo=pypi&logoColor=white&color=3775A9&label=pip)](https://pypi.org/project/pm-skills/)
 [![MCP](https://img.shields.io/badge/MCP-registry-0098FF?logo=modelcontextprotocol&logoColor=white)](https://github.com/mohitagw15856/pm-claude-skills#-use-it-anywhere--the-ai-ecosystem)
 [![Remote MCP](https://img.shields.io/badge/ChatGPT%20%C2%B7%20Claude.ai-connector-10A37F)](mcp-remote/)
+[![Smithery](https://smithery.ai/badge/mohit15856/pm-skills)](https://smithery.ai/servers/mohit15856/pm-skills)
 [![Skills](https://img.shields.io/badge/skills-205-blue)](https://github.com/mohitagw15856/pm-claude-skills)
 [![eval](https://img.shields.io/badge/eval--scored-196%20%C2%B7%20avg%204.8%2F5-brightgreen)](https://mohitagw15856.github.io/pm-claude-skills/leaderboard.html)
 [![Subagents](https://img.shields.io/badge/subagents-4-blueviolet)](agents/)
@@ -304,7 +305,7 @@ The same 205 skills reach you through every channel — pick whatever fits your 
 | 🔌 **`skills` CLI** | `npx skills add mohitagw15856/pm-claude-skills` (works across 60+ agents) |
 | 🐍 **Python / PyPI** | `pip install pm-skills` → `search_skills` / `get_skill` + **LangChain & CrewAI** tools |
 | 🧠 **MCP (local)** | `npx -y pm-claude-skills-mcp` — tools, **prompts & resources**. Listed in the [official MCP registry](https://github.com/mohitagw15856/pm-claude-skills/blob/main/server.json). |
-| ⚡ **MCP (hosted)** | Add **`https://pm-skills-mcp.pm-claude-skills.workers.dev/`** as a connector URL in **ChatGPT, Claude.ai, or Cursor** — no install. ([build your own](mcp-remote/)) |
+| ⚡ **MCP (hosted)** | Add **`https://pm-skills-mcp.pm-claude-skills.workers.dev/`** as a connector URL in **ChatGPT, Claude.ai, or Cursor** — no install. Also on **[Smithery](https://smithery.ai/servers/mohit15856/pm-skills)**. ([build your own](mcp-remote/)) |
 | 🧩 **Browser extension** | A skill picker inside ChatGPT, Claude.ai & Gemini — [`extension/`](extension/) |
 | 🖥️ **IDE rules** | Generated exports for **Cursor, Windsurf, Aider, Cline, Continue, Zed, Roo** — [`exports/`](exports/) |
 | 🤖 **Agents & answer engines** | [`llms.txt`](https://mohitagw15856.github.io/pm-claude-skills/llms.txt) makes the whole library discoverable & citable |
