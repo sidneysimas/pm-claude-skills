@@ -31,6 +31,8 @@ if (!res.ok) {
   process.exit(1);
 }
 const data = await res.json();
+const allHits = data.hits || [];
+console.error(`GoatCounter: ${allHits.length} paths, ${allHits.filter((h) => h.event).length} events, ${allHits.filter((h) => /^\/?run\//.test(h.path || '')).length} run/ events in the window.`);
 // Our run events are recorded as path "run/<skill>" (event:true). A leading slash may be added.
 const num = (c) => Array.isArray(c) ? (c[0] || 0) : (typeof c === 'number' ? c : 0);
 const skills = (data.hits || [])
