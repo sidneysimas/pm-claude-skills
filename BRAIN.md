@@ -35,6 +35,11 @@ recall (brain) → run a skill (method) → produce the artifact → propose act
   messages) with a dry-run preview, per-action risk gate, approval, and auto-record back to the brain.
 - **[`templates/brain/`](templates/brain/)** — a copyable, filled-in scaffold (Obsidian-vault
   compatible) so the loop is tangible from minute one.
+- **[In-browser Brain](https://mohitagw15856.github.io/pm-claude-skills/brain.html)** — a zero-install
+  version of the brain in the playground: edit the six sections on the **🧠 Brain** page, toggle
+  "use my brain in every run" and it's prepended (recall) to every skill, and hit **🧠 Save to Brain**
+  on any output to write a provenance-tagged fact back. Stored only in your browser (localStorage),
+  and it round-trips with the on-disk `brain/` folder via markdown import/export.
 - **[`/brain`](commands/brain.md)** slash command.
 - Two skills made **brain-aware** as the reference pattern: [`prd-template`](skills/prd-template/SKILL.md)
   (reads strategy/context, writes the feature entity) and [`meeting-notes`](skills/meeting-notes/SKILL.md)
@@ -57,7 +62,7 @@ weakest) — so skills can downgrade confidence on weak evidence instead of trea
 | **0 — Proof** | brain schema + provenance + recall helper + 2 brain-aware skills | ✅ shipped |
 | **1 — Write-back** | `record` operation + `brain_write.py` (append-only, dry-run, approval-gated) + the "📥 Propose to the Brain" block, rolled across high-value skills | ✅ shipped |
 | **2 — External actions** | the [`action-runner`](skills/action-runner/SKILL.md) skill: a dry-run executor for *external* actions (open tickets, post updates) with `action_preview.py` risk-gating, approval per high-risk action, then auto-record back to the brain. Wired into product-launch-checklist, sprint-planning, incident-postmortem. | ✅ shipped |
-| **3 — Shared brain & generalise** | an MCP "brain server" so n8n / Lovable / the playground share one brain; profession brains (CS, founder, legal); more action targets (Notion, Slack, calendar); a `/brain review` sweep and scenario eval suite | planned |
+| **3 — Shared brain & generalise** | an in-browser brain in the playground (recall + write-back, markdown round-trip with the files) ✅; next: an MCP "brain server" so n8n / Lovable / the playground share one brain; profession brains (CS, founder, legal); more action targets (Notion, Slack, calendar); a `/brain review` sweep and scenario eval suite | in progress |
 
 ## Design principles
 

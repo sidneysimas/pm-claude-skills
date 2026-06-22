@@ -165,9 +165,19 @@
               <option value="pptx">PowerPoint (.pptx)</option>
               <option value="xlsx">Excel (.xlsx)</option>
             </select>
+            <button id="brainSaveBtn" class="ghost" type="button" title="Save a durable fact from this result to your Brain">🧠 Save to Brain</button>
             <button id="shareHubBtn" class="ghost" type="button" title="Post what you got to the community Show & Tell">💬 Share to Hub</button>
             <button id="imgBtn" class="ghost" type="button" title="Download this result as a branded image">🖼️ Save as image</button>
           </div>
+        </div>
+        <div id="brainSavePanel" class="brain-save" hidden>
+          <span class="bs-title">🧠 Remember this →</span>
+          <select id="brainSaveSection" class="ghost" title="Which part of your brain"></select>
+          <select id="brainSaveTag" class="ghost" title="How strong is the evidence?"></select>
+          <input id="brainSaveText" type="text" placeholder="One durable fact / decision to remember…" />
+          <button id="brainSaveGo" class="primary" type="button">Save</button>
+          <button id="brainSaveCancel" class="ghost" type="button">Cancel</button>
+          <a class="bs-link" href="brain.html" title="Open your Brain">edit brain →</a>
         </div>
         <article id="output" class="output markdown"></article>
         <div id="compareGrid" class="compare-grid" hidden></div>
@@ -183,6 +193,7 @@
   </div>
 
   <script src="providers.js"></script>
+<script src="brain.js"></script>
 <script src="export-doc.js"></script>
 <script src="app.js"></script>
 <script src="nav.js"></script>

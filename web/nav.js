@@ -30,6 +30,7 @@
     ['ask.html', '❓ Ask'],
     ['canvas.html', '🧩 Workflow Canvas'],
     ['agent.html', '✨ Auto-Agent'],
+    ['brain.html', '🧠 Brain'],
     ['studio.html', '🏗️ Create a skill'],
     ['grade.html', '📝 Grade your work'],
     ['examples.html', '📄 Sample outputs'],

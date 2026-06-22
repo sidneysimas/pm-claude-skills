@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="google-site-verification" content="osZgdSLYnqidzCKt4CxjqAxo44OqGvlKi-Bmg0UmxFQ" />
+<title>🧠 Brain — a durable memory for your skills</title>
+<meta name="description" content="Give your skills a memory. The Professional Brain is a local markdown store the playground reads before every run and writes back to after — provenance-tagged, in your browser, exportable to files/Obsidian." />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  .brain { max-width: 920px; margin: 0 auto; padding: 16px 22px 80px; }
+  .brain .lead { color: var(--muted); font-size: 15px; }
+  .brain-bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 14px 0; padding: 12px 14px; background: var(--panel); border: 1px solid var(--border); border-radius: 12px; }
+  .brain-bar label { display: inline-flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 600; }
+  .brain-bar .spacer { flex: 1; }
+  .legend { font-size: 12px; color: var(--muted); margin: 4px 0 0; }
+  .legend code { background: var(--panel-2); padding: 1px 5px; border-radius: 4px; }
+  .sect { margin: 16px 0; }
+  .sect h3 { margin: 0 0 4px; font-size: 16px; text-transform: capitalize; }
+  .sect .hint { font-weight: 400; color: var(--muted); font-size: 12.5px; margin-left: 6px; }
+  .sect textarea { width: 100%; box-sizing: border-box; min-height: 90px; padding: 11px 13px; background: var(--panel); border: 1px solid var(--border); border-radius: 10px; color: var(--text); font: inherit; font-size: 13.5px; line-height: 1.5; resize: vertical; }
+  #savedMsg { font-size: 12px; color: var(--accent-2); }
+  .file-load { cursor: pointer; }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><img src="assets/product-notes.jpg" alt="Product Notes" class="brand-logo" />
+    <div class="brand-text"><h1>🧠 Your Brain</h1><p class="tagline">A durable memory your skills read before answering — and write back to after.</p></div></div>
+</header>
+<nav class="toolbar-nav" id="toolbar" aria-label="Tools"></nav>
+
+<div class="brain">
+  <p class="lead">Everything here is stored <strong>only in this browser</strong> (localStorage) and added to your skill runs as grounded memory. New to it? See the <a href="https://github.com/mohitagw15856/pm-claude-skills/blob/main/BRAIN_QUICKSTART.md">5-minute Quickstart</a>. Edit a section and it saves as you type.</p>
+
+  <div class="brain-bar">
+    <label title="When on, the playground prepends your brain to every skill run"><input type="checkbox" id="useBrain" /> Use my brain in every skill run</label>
+    <span class="spacer"></span>
+    <button id="seedBtn" class="ghost" type="button" title="Fill the sections with the example brain">Load example</button>
+    <label class="file-load ghost" style="padding:6px 12px;border:1px solid var(--border);border-radius:8px" title="Import a brain markdown export">📥 Import .md<input type="file" id="importFile" accept=".md,.txt" hidden /></label>
+    <button id="exportBtn" class="ghost" type="button" title="Download your brain as markdown (for files / Obsidian)">📤 Export .md</button>
+    <button id="clearBtn" class="ghost" type="button">Clear</button>
+    <span id="savedMsg"></span>
+  </div>
+  <p class="legend">Provenance — tag facts by evidence strength (strongest → weakest): <code>[data]</code> <code>[interview]</code> <code>[external]</code> <code>[verbal]</code> <code>[hunch]</code>. Skills won't treat a <code>[hunch]</code> as settled.</p>
+
+  <div id="sections"></div>
+</div>
+
+<script src="brain.js"></script>
+<script>
+const el = (id) => document.getElementById(id);
+const HINTS = {
+  context: 'Your product, who it\'s for, key metrics & their definitions, your voice. Start here.',
+  knowledge: 'Durable facts about the market, users, and how things work.',
+  decisions: 'Decisions made and why — tag the evidence behind each.',
+  hypotheses: 'Things you believe but haven\'t proven — usually [hunch] or [interview].',
+  stakeholders: 'Who\'s who — champions, buyers, detractors, their asks.',
+  entities: 'Features, accounts, projects you keep coming back to.',
+};
+const EXAMPLE = {
+  context: 'Acme — a B2B SaaS task manager for engineering teams. North-star: weekly active teams. Voice: plain, direct, a little playful.',
+  knowledge: '- [data] 68% of churn happens on mobile.\n- [data] Activation = a team invites 3+ members in week 1.',
+  decisions: '- [data] Prioritise the mobile revamp over the new dashboard — mobile drives most churn.',
+  hypotheses: '- [hunch] A guided mobile onboarding will lift D30 retention.\n- [interview] 3 users said the current setup flow is confusing.',
+  stakeholders: '- Sarah (CPO) — wants enterprise SSO this quarter. [verbal]',
+  entities: '- feature-mobile-revamp — in design; owner: Priya.',
+};
+
+function render() {
+  const wrap = el('sections');
+  wrap.innerHTML = '';
+  PMBrain.SECTIONS.forEach((s) => {
+    const d = document.createElement('div');
+    d.className = 'sect';
+    d.innerHTML = `<h3>${s}<span class="hint">${HINTS[s] || ''}</span></h3><textarea data-s="${s}" placeholder="Markdown — one fact per line, provenance-tagged"></textarea>`;
+    const ta = d.querySelector('textarea');
+    ta.value = PMBrain.get(s);
+    ta.addEventListener('input', () => { PMBrain.set(s, ta.value); flash('Saved'); });
+    wrap.appendChild(d);
+  });
+}
+let flashT;
+function flash(m) { el('savedMsg').textContent = m; clearTimeout(flashT); flashT = setTimeout(() => el('savedMsg').textContent = '', 1200); }
+
+el('useBrain').checked = PMBrain.load().enabled !== false;
+el('useBrain').addEventListener('change', (e) => { PMBrain.setEnabled(e.target.checked); flash(e.target.checked ? 'On — brain feeds your runs' : 'Off'); });
+el('seedBtn').addEventListener('click', () => { if (confirm('Fill empty sections with the example brain?')) { PMBrain.SECTIONS.forEach((s) => { if (!PMBrain.get(s).trim()) PMBrain.set(s, EXAMPLE[s] || ''); }); render(); flash('Example loaded'); } });
+el('clearBtn').addEventListener('click', () => { if (confirm('Clear your whole brain? (only this browser)')) { PMBrain.SECTIONS.forEach((s) => PMBrain.set(s, '')); render(); flash('Cleared'); } });
+el('exportBtn').addEventListener('click', () => {
+  const blob = new Blob([PMBrain.exportMarkdown()], { type: 'text/markdown' });
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'brain.md'; a.click(); URL.revokeObjectURL(a.href);
+});
+el('importFile').addEventListener('change', (e) => {
+  const f = e.target.files[0]; if (!f) return;
+  const r = new FileReader(); r.onload = () => { PMBrain.importMarkdown(String(r.result)); render(); flash('Imported'); }; r.readAsText(f); e.target.value = '';
+});
+render();
+</script>
+<script src="nav.js"></script>
+</body>
+</html>

@@ -29,6 +29,7 @@ const el = (id) => document.getElementById(id);
 let SKILLS = [];
 let current = null;
 let controller = null;
+let lastRunUsedBrain = false;
 
 const TIER_META = {
   production: { label: 'Production-Ready', cls: 'tier-production', dot: '🟢' },
@@ -91,6 +92,7 @@ async function init() {
   updateHistoryBtn();
   el('shareHubBtn').addEventListener('click', shareToHub);
   el('imgBtn').addEventListener('click', shareAsImage);
+  initBrainSave();
 
   // Copy the skill's instructions formatted for another assistant.
   el('copyChatgpt').addEventListener('click', () => copyPrompt('chatgpt'));
@@ -321,6 +323,39 @@ function shareToHub() {
     `**What I got:**\n\n${out.slice(0, 5000)}${out.length > 5000 ? '\n\n…(truncated)' : ''}\n\n**Tweaks / notes:** `;
   const url = `${REPO_URL}/discussions/new?category=show-and-tell&title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
   window.open(url, '_blank', 'noopener');
+}
+
+// ---------- Save a durable fact from the output to the Brain ----------
+function initBrainSave() {
+  const btn = el('brainSaveBtn'), panel = el('brainSavePanel');
+  if (!btn || !window.PMBrain) { if (btn) btn.hidden = true; return; }
+  const secSel = el('brainSaveSection'), tagSel = el('brainSaveTag');
+  secSel.innerHTML = PMBrain.SECTIONS.map((s) => `<option value="${s}">${s}</option>`).join('');
+  tagSel.innerHTML = PMBrain.TAGS.map((t) => `<option value="${t}">[${t}]</option>`).join('');
+  // A skill's output is usually a recommendation → default to a decision, weakly evidenced.
+  secSel.value = 'decisions';
+  tagSel.value = 'hunch';
+  btn.addEventListener('click', () => {
+    const open = panel.hidden;
+    panel.hidden = !open;
+    if (open) {
+      const raw = (el('output').dataset.raw || '').trim();
+      // Seed with the first substantive line of the output as a starting point.
+      const firstLine = raw.split('\n').map((l) => l.replace(/^#+\s*|^[-*]\s*/, '').trim()).find((l) => l.length > 8) || '';
+      el('brainSaveText').value = firstLine.slice(0, 160);
+      el('brainSaveText').focus();
+    }
+  });
+  el('brainSaveCancel').addEventListener('click', () => { panel.hidden = true; });
+  el('brainSaveGo').addEventListener('click', () => {
+    const text = el('brainSaveText').value.trim();
+    if (!text) return setStatus('Type the fact to remember first.', true);
+    PMBrain.append(secSel.value, text, tagSel.value);
+    panel.hidden = true;
+    el('brainSaveText').value = '';
+    setStatus(`🧠 Saved to your brain → ${secSel.value}. It’ll ground future runs.`);
+  });
+  el('brainSaveText').addEventListener('keydown', (e) => { if (e.key === 'Enter') el('brainSaveGo').click(); });
 }
 
 // ---------- Save output as a branded PNG card ----------
@@ -629,9 +664,11 @@ async function run() {
   if (window.pmTrack) pmTrack('run/' + current.name);
 
   const ctx = getContext();
-  const ctxBlock = ctx
-    ? `\n\n## About the user and their context (apply this throughout — match their product, audience, and voice)\n${ctx}`
-    : '';
+  const brain = (window.PMBrain && PMBrain.isEnabled()) ? PMBrain.recallBlock() : '';
+  const ctxBlock =
+    (ctx ? `\n\n## About the user and their context (apply this throughout — match their product, audience, and voice)\n${ctx}` : '') +
+    (brain ? `\n\n${brain}` : '');
+  lastRunUsedBrain = !!brain;
   const model = el('model').value;
   const critique = el('critiqueToggle').checked;
 
@@ -663,6 +700,7 @@ ${current.instructions}${ctxBlock}`;
   el('outputWrap').hidden = false;
   el('runBtn').disabled = true;
   el('stopBtn').hidden = false;
+  if (lastRunUsedBrain) setStatus('🧠 Grounding this run in your brain…');
   controller = new AbortController();
 
   // Single → #output. Compare-plain → 2 panes. Compare-models → one pane per model.
