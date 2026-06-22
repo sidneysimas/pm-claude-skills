@@ -19,21 +19,24 @@ if (!TOKEN) {
   process.exit(0);
 }
 
-const day = (d) => d.toISOString().slice(0, 10);
-const start = day(new Date(Date.now() - 7 * 864e5));
-const end = day(new Date());
-const url = `https://${SITE}.goatcounter.com/api/v0/stats/hits?start=${start}&end=${end}&limit=200`;
+// GoatCounter wants hour-rounded RFC3339 timestamps for start/end.
+const hour = (d) => d.toISOString().slice(0, 13) + ':00:00Z';
+const start = hour(new Date(Date.now() - 7 * 864e5));
+const end = hour(new Date());
+const url = `https://${SITE}.goatcounter.com/api/v0/stats/hits?start=${encodeURIComponent(start)}&end=${encodeURIComponent(end)}&limit=200`;
 
 const res = await fetch(url, { headers: { authorization: 'Bearer ' + TOKEN } });
 if (!res.ok) {
-  console.error(`GoatCounter API ${res.status}: ${(await res.text()).slice(0, 200)}`);
+  console.error(`GoatCounter API ${res.status} for ${url}\n${(await res.text()).slice(0, 300)}`);
   process.exit(1);
 }
 const data = await res.json();
-// Our run events are recorded as path "run/<skill>" (a leading slash may be added).
+// Our run events are recorded as path "run/<skill>" (event:true). A leading slash may be added.
+const num = (c) => Array.isArray(c) ? (c[0] || 0) : (typeof c === 'number' ? c : 0);
 const skills = (data.hits || [])
+  .filter((h) => h.event || /^\/?run\//.test(h.path || ''))
   .filter((h) => /^\/?run\//.test(h.path || ''))
-  .map((h) => ({ name: (h.path || '').replace(/^\/?run\//, ''), count: h.count || (h.stats || []).reduce((a, s) => a + (s.daily || 0), 0) || 0 }))
+  .map((h) => ({ name: (h.path || '').replace(/^\/?run\//, ''), count: num(h.count) || (h.stats || []).reduce((a, s) => a + (s.daily || s.count || 0), 0) || 0 }))
   .filter((s) => s.name)
   .sort((a, b) => b.count - a.count)
   .slice(0, 8);
