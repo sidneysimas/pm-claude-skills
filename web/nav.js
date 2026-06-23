@@ -25,31 +25,64 @@
       try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: String(name).slice(0, 80), event: true }); } catch (e) {}
     };
   }
-  var TOOLS = [
-    ['index.html', '▶ Playground'],
-    ['galaxy.html', '🌌 Galaxy'],
-    ['ask.html', '❓ Ask'],
-    ['canvas.html', '🧩 Workflow Canvas'],
-    ['agent.html', '✨ Auto-Agent'],
-    ['brain.html', '🧠 Brain'],
-    ['studio.html', '🏗️ Create a skill'],
-    ['grade.html', '📝 Grade your work'],
-    ['examples.html', '📄 Sample outputs'],
-    ['benchmark.html', '🏆 Benchmark'],
-    ['community.html', '💬 Community'],
-    ['leaderboard.html', '📊 Leaderboard'],
-    ['catalog.html', '📚 Catalog'],
-    ['learn.html', '🎓 Learn'],
-    ['pro.html', '⭐ Pro'],
+  // Top-level links stay flat; everything else is tucked into two dropdown groups so the bar
+  // stays short. To add/move a tool, edit this list only.
+  var NAV = [
+    { href: 'index.html', label: '▶ Playground' },
+    { href: 'galaxy.html', label: '🌌 Galaxy' },
+    { group: 'Tools', items: [
+      ['agent.html', '✨ Auto-Agent'],
+      ['canvas.html', '🧩 Workflow Canvas'],
+      ['ask.html', '❓ Ask'],
+      ['brain.html', '🧠 Brain'],
+      ['grade.html', '📝 Grade your work'],
+      ['studio.html', '🏗️ Create a skill'],
+    ] },
+    { group: 'Explore', items: [
+      ['catalog.html', '📚 Catalog'],
+      ['examples.html', '📄 Sample outputs'],
+      ['leaderboard.html', '📊 Leaderboard'],
+      ['benchmark.html', '🏆 Benchmark'],
+      ['learn.html', '🎓 Learn'],
+      ['community.html', '💬 Community'],
+    ] },
+    { href: 'pro.html', label: '⭐ Pro' },
   ];
   var nav = document.getElementById('toolbar');
   if (!nav) return;
   var file = (location.pathname.split('/').pop() || 'index.html');
   if (file === '' || file === '/') file = 'index.html';
-  nav.innerHTML = TOOLS.map(function (t) {
-    var active = t[0] === file ? ' active' : '';
-    return '<a class="tool' + active + '" href="' + t[0] + '">' + t[1] + '</a>';
+  var link = function (href, lbl) { return '<a class="tool' + (href === file ? ' active' : '') + '" href="' + href + '">' + lbl + '</a>'; };
+  nav.innerHTML = NAV.map(function (it) {
+    if (it.href) return link(it.href, it.label);
+    var here = it.items.some(function (t) { return t[0] === file; });
+    return '<span class="tool-group">'
+      + '<button type="button" class="tool group-btn' + (here ? ' active' : '') + '" aria-haspopup="true" aria-expanded="false">' + it.group + ' ▾</button>'
+      + '<span class="group-menu" hidden>' + it.items.map(function (t) { return link(t[0], t[1]); }).join('') + '</span>'
+      + '</span>';
   }).join('');
+
+  // Dropdown open/close (click to toggle, outside-click / Escape to close).
+  var groups = [].slice.call(nav.querySelectorAll('.tool-group'));
+  function closeAll(except) {
+    groups.forEach(function (g) {
+      if (g === except) return;
+      g.querySelector('.group-menu').hidden = true;
+      g.querySelector('.group-btn').setAttribute('aria-expanded', 'false');
+    });
+  }
+  groups.forEach(function (g) {
+    var btn = g.querySelector('.group-btn'), menu = g.querySelector('.group-menu');
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var willOpen = menu.hidden;
+      closeAll(g);
+      menu.hidden = !willOpen;
+      btn.setAttribute('aria-expanded', String(willOpen));
+    });
+  });
+  document.addEventListener('click', function () { closeAll(null); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAll(null); });
 
   // Theme toggle — rendered on every page so it works site-wide.
   var t = document.createElement('button');

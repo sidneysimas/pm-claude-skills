@@ -36,6 +36,10 @@
       n.vx = 0; n.vy = 0;
     });
 
+    // Pre-warm: run the simulation off-screen so the graph appears already settled instead of
+    // animating into place from chaos. After that, only a gentle finish remains, which cools fast.
+    if (opts.prewarm) { for (var w = 0; w < opts.prewarm; w++) tick(); alpha = 0.12; }
+
     var view = { x: 0, y: 0, k: 1 };
     var hover = null, dragNode = null, panning = false, px = 0, py = 0, moved = false;
 
@@ -62,7 +66,6 @@
         n.vx = Math.max(-MAXV, Math.min(MAXV, n.vx)); n.vy = Math.max(-MAXV, Math.min(MAXV, n.vy));
         if (n !== dragNode) { n.x += n.vx; n.y += n.vy; }
       });
-      alpha *= (1 - ALPHA_DECAY); // cool down toward a stable layout
     }
 
     function draw() {
@@ -79,7 +82,7 @@
 
     var raf;
     function loop() {
-      if (alpha > ALPHA_MIN || dragNode) tick(); // frozen once cooled; drawing continues for pulse
+      if (alpha > ALPHA_MIN || dragNode) { tick(); alpha *= (1 - ALPHA_DECAY); } // cools, then freezes
       draw();
       raf = requestAnimationFrame(loop);
     }

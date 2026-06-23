@@ -97,13 +97,16 @@
   }
   async function streamLocal(opts) {
     var engine = await getEngine(opts.model, function (r) { if (opts.onProgress) opts.onProgress(r); });
+    if (opts.signal && opts.signal.aborted) return '';
+    // Stop the moment the user hits Stop — interrupt generation immediately, don't wait for the next token.
+    if (opts.signal) opts.signal.addEventListener('abort', function () { try { engine.interruptGenerate(); } catch (_) {} }, { once: true });
     var messages = [];
     if (opts.system) messages.push({ role: 'system', content: opts.system });
     messages.push({ role: 'user', content: opts.userMessage });
     var chunks = await engine.chat.completions.create({ messages: messages, stream: true, max_tokens: 4096 });
     var acc = '';
     for await (var chunk of chunks) {
-      if (opts.signal && opts.signal.aborted) { try { await engine.interruptGenerate(); } catch (_) {} break; }
+      if (opts.signal && opts.signal.aborted) { try { engine.interruptGenerate(); } catch (_) {} break; }
       var t = (chunk.choices && chunk.choices[0] && chunk.choices[0].delta && chunk.choices[0].delta.content) || '';
       if (t) { acc += t; if (opts.onDelta) opts.onDelta(acc); }
     }

@@ -103,7 +103,6 @@ const label = (p) => p.replace(/^pm-/, '').replace(/(^|-)(\w)/g, (_, d, c) => (d
   el('galaxySearch').addEventListener('input', (e) => { query = e.target.value.toLowerCase().trim(); });
 
   const tip = el('gtip');
-  let t0 = performance.now();
 
   function lit(n) {
     if (query) return (n.s.title + ' ' + n.s.name + ' ' + n.s.description).toLowerCase().includes(query);
@@ -113,6 +112,7 @@ const label = (p) => p.replace(/^pm-/, '').replace(/(^|-)(\w)/g, (_, d, c) => (d
 
   PMGraph.create(canvas, {
     nodes, links, repulsion: 900, spring: 0.02, linkLen: 42, gravity: 0.06,
+    prewarm: 280, alphaDecay: 0.05, // settle off-screen, then freeze quickly — no perpetual motion
     drawLink(ctx, a, b) {
       const on = lit(a) && lit(b);
       ctx.strokeStyle = on ? 'rgba(150,170,200,0.16)' : 'rgba(120,130,150,0.04)';
@@ -120,9 +120,7 @@ const label = (p) => p.replace(/^pm-/, '').replace(/(^|-)(\w)/g, (_, d, c) => (d
       ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
     },
     drawNode(ctx, n, hovered, k) {
-      const on = lit(n), t = performance.now() - t0;
-      const pulse = n.trend ? 1 + 0.14 * Math.sin(t / 1100 + n.seed) : 1;
-      const rad = n.r * pulse;
+      const on = lit(n), rad = n.r;
       ctx.globalAlpha = on ? 1 : 0.12;
       // glow
       const grd = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, rad * 3.4);
@@ -132,7 +130,9 @@ const label = (p) => p.replace(/^pm-/, '').replace(/(^|-)(\w)/g, (_, d, c) => (d
       // core
       ctx.globalAlpha = on ? 1 : 0.12;
       ctx.fillStyle = n.color; ctx.beginPath(); ctx.arc(n.x, n.y, rad, 0, 7); ctx.fill();
-      if (hovered) { ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5; ctx.stroke(); }
+      // trending = a static ring (no animation, so the galaxy stays perfectly still)
+      if (n.trend) { ctx.globalAlpha = on ? 0.85 : 0.1; ctx.strokeStyle = '#fff'; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(n.x, n.y, rad + 3, 0, 7); ctx.stroke(); }
+      if (hovered) { ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(n.x, n.y, rad, 0, 7); ctx.stroke(); }
       // label when zoomed in, hovered, or searching
       if (on && (hovered || k > 1.7 || (query && rad))) {
         ctx.globalAlpha = 1; ctx.fillStyle = hovered ? '#fff' : 'rgba(220,226,236,0.82)';
