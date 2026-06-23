@@ -42,6 +42,8 @@ button { font-family: inherit; }
   box-shadow: 0 1px 0 rgba(217,119,87,.18);
 }
 .brand { display: flex; align-items: center; gap: 14px; }
+.brand[role="link"] { transition: opacity .12s, transform .12s; border-radius: 10px; }
+.brand[role="link"]:hover { opacity: .9; transform: translateY(-1px); }
 .brand-logo {
   height: 46px; width: auto; border-radius: 8px; background: #f5f1e8;
   padding: 4px 8px; display: block;
@@ -259,8 +261,9 @@ button.ghost:hover { border-color: var(--accent); background: var(--panel); }
 .toolbar-nav {
   display: flex; gap: 8px; flex-wrap: wrap; align-items: center; justify-content: center;
   margin: 0; padding: 12px 22px;
-  background: rgba(13,15,20,.7); backdrop-filter: blur(6px);
+  background: rgba(13,15,20,.82); backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 50;   /* always reachable while scrolling */
 }
 .toolbar-nav .tool {
   font-size: 13px; font-weight: 600; text-decoration: none; padding: 7px 14px; border-radius: 99px;
@@ -269,6 +272,9 @@ button.ghost:hover { border-color: var(--accent); background: var(--panel); }
 }
 .toolbar-nav .tool:hover { color: var(--text); background: var(--panel-2); border-color: var(--border); transform: translateY(-1px); }
 .toolbar-nav .tool.active { background: var(--accent-grad); border-color: transparent; color: #1a1207; box-shadow: var(--shadow-accent); }
+/* GitHub / repo CTA — outlined-accent so "back to the source" is always obvious. */
+.toolbar-nav .tool.cta { color: var(--text); border-color: var(--accent); font-weight: 700; }
+.toolbar-nav .tool.cta:hover { background: var(--accent-grad); color: #1a1207; border-color: transparent; box-shadow: var(--shadow-accent); }
 /* Grouped dropdowns keep the bar short */
 .toolbar-nav .tool-group { position: relative; display: inline-flex; }
 .toolbar-nav .group-btn { cursor: pointer; font-family: inherit; }
