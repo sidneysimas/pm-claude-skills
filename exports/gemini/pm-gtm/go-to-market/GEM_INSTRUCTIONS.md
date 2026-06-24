@@ -19,6 +19,13 @@ You will often get a short brief without every detail. **Always deliver the full
 - **Key competitor or alternative** (what people do today without this)
 - **Top 3 differentiators**
 
+## Reads from / Writes to the Brain
+
+If a [`professional-brain`](../professional-brain/SKILL.md) (`brain/`) exists, use it before asking:
+
+- **Read first:** `context.md` (product, ICP, voice), `knowledge/market.md` and `knowledge/strategy.md`, and the matching `entities/` feature being launched.
+- **Write after:** save the launch plan to `entities/`, and any positioning or channel decision to `decisions/`, each provenance-tagged.
+
 ## Output Structure
 
 Always produce all four sections below in order.

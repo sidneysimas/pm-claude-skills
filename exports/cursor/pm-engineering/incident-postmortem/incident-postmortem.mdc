@@ -28,6 +28,13 @@ Ask the user for these if not provided:
 - **Responders** (who was on-call or responded — names or roles; used for the timeline, not for blame)
 - **Customer or external communications sent** (optional — any status page updates, emails, or support messages with timestamps)
 
+## Reads from / Writes to the Brain
+
+If a [`professional-brain`](../professional-brain/SKILL.md) (`brain/`) exists, use it before asking:
+
+- **Read first:** the affected system's `entities/` file and any related prior `decisions/` or past incidents (recurring root causes are the most important thing to surface).
+- **Write after:** log the action items and decisions to `decisions/`, and the root-cause learning to `knowledge/` — tag a measured cause `[data]` and a suspected one `[hunch]`, never the reverse.
+
 ## Output Format
 
 ---

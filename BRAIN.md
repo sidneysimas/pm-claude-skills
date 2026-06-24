@@ -46,9 +46,14 @@ recall (brain) → run a skill (method) → produce the artifact → propose act
   on any output to write a provenance-tagged fact back. Stored only in your browser (localStorage),
   and it round-trips with the on-disk `brain/` folder via markdown import/export.
 - **[`/brain`](commands/brain.md)** slash command.
-- Two skills made **brain-aware** as the reference pattern: [`prd-template`](skills/prd-template/SKILL.md)
-  (reads strategy/context, writes the feature entity) and [`meeting-notes`](skills/meeting-notes/SKILL.md)
-  (reads stakeholders, writes decisions).
+- **18 skills made brain-aware** — each carries a "Reads from / Writes to the Brain" contract
+  (e.g. [`prd-template`](skills/prd-template/SKILL.md) reads strategy/context & writes the feature
+  entity; [`meeting-notes`](skills/meeting-notes/SKILL.md) writes decisions; `metrics-framework`,
+  `incident-postmortem`, `user-research-synthesis`, `go-to-market`, `stakeholder-update`,
+  `product-launch-checklist`, and the new AI/growth skills, among others).
+- **Action targets** for [`action-runner`](skills/action-runner/SKILL.md): GitHub, Linear/Jira,
+  Slack, Notion, Email, and Calendar — each with example ops and a default risk level (outbound
+  messages are 🔴, approval-gated by default).
 
 ### The brain schema
 
