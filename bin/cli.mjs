@@ -154,6 +154,11 @@ function list() {
 
 const HELP = `pm-claude-skills — install professional Agent Skills into any AI coding tool.
 
+👋 New here? Two fast ways to start:
+  • No install — try any skill in your browser: https://mohitagw15856.github.io/pm-claude-skills/
+  • In your editor — run:  npx pm-claude-skills add --agent claude
+(This is a CLI, not a library — you don't need \`npm install\`; \`npx …\` always runs the latest.)
+
 Usage:
   npx pm-claude-skills add --agent <claude|hermes|codex|openclaw|cursor|windsurf|aider> [--target <path>] [--link] [--dry-run]
   npx pm-claude-skills list

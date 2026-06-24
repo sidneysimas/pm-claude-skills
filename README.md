@@ -261,6 +261,13 @@ Most skill repos are a folder of prompts. This one is a **system** — measured,
 
 ## 🚀 Quick Install (2 minutes)
 
+> **Not sure where to start?** Pick by what you want:
+> - **Just try it (0 install):** open the **[live Playground](https://mohitagw15856.github.io/pm-claude-skills/)** and run any skill.
+> - **Use it in Claude Code:** `npx pm-claude-skills add --agent claude` (or the `/plugin` route below).
+> - **Have it in every session:** add the MCP server (one line, below).
+>
+> ⚠️ **You don't need `npm install pm-claude-skills`** — it's a CLI, not a library, so there's nothing to import. Use `npx pm-claude-skills …` (it always runs the latest). `npm install` just downloads it and does nothing on its own.
+
 **With the [`skills`](https://github.com/vercel-labs/skills) CLI** (the open agent-skills installer that works across Claude Code, Cursor, Codex, OpenCode & 60+ agents) — pick from all 232 interactively:
 
 ```bash
