@@ -161,6 +161,7 @@ const HELP = `pm-claude-skills — install professional Agent Skills into any AI
 
 Usage:
   npx pm-claude-skills add --agent <claude|hermes|codex|openclaw|cursor|windsurf|aider> [--target <path>] [--link] [--dry-run]
+  npx pm-claude-skills run <skill> [--text "…" | --input <file>] [--model <m>] [--out <file>]
   npx pm-claude-skills list
   npx pm-claude-skills --version
 
@@ -170,6 +171,8 @@ Examples:
   npx pm-claude-skills add --agent windsurf   # .md rules into ./.windsurf/rules
   npx pm-claude-skills add --agent codex --link
 
+  npx pm-claude-skills run prd-template --text "a referral program for B2B users"   # run a skill (needs ANTHROPIC_API_KEY)
+  cat notes.txt | npx pm-claude-skills run meeting-notes --out summary.md           # pipe input, write the artifact
   npx pm-claude-skills generate --from <url|file>   # turn your docs into a SKILL.md (needs ANTHROPIC_API_KEY)
 
 ${STAR}
@@ -178,9 +181,14 @@ ${STAR}
 const opts = parse(process.argv.slice(2));
 const cmd = opts._[0];
 if (opts.version) console.log(VERSION);
-else if (opts.help || !cmd || cmd === 'help') console.log(HELP);
+else if (!cmd || cmd === 'help' || (opts.help && cmd !== 'run' && cmd !== 'generate')) console.log(HELP);
 else if (cmd === 'list') list();
 else if (cmd === 'add') add(opts);
+else if (cmd === 'run') {
+  const { run } = await import('./run.mjs');
+  try { process.exit(await run(process.argv.slice(3))); }
+  catch (e) { console.error(`Error: ${e.message}`); process.exit(1); }
+}
 else if (cmd === 'generate') {
   const { run } = await import('./generate.mjs');
   try { process.exit(await run(process.argv.slice(3))); }
