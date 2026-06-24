@@ -9,6 +9,14 @@
   },
   "plugins": [
     {
+      "name": "pm-growth",
+      "description": "Growth & marketing skills: Marketing Funnel Plan, Lifecycle/CRM Plan, Paid Acquisition Plan, Growth Experiment Backlog, Retention Loop Design, Referral Program Design, Messaging Framework, and Conversion Rate Optimization.",
+      "version": "1.0.0",
+      "category": "productivity",
+      "source": "./plugins/pm-growth",
+      "homepage": "https://github.com/mohitagw15856/pm-claude-skills"
+    },
+    {
       "name": "pm-ai",
       "description": "AI/ML engineering skills for shipping AI features responsibly: Model Card, AI Eval Plan, RAG Design Doc, Agent Spec, Dataset Datasheet, AI Feature PRD, and LLM Cost & Latency Budget.",
       "version": "1.0.0",
