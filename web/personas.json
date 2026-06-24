@@ -1,0 +1,53 @@
+{
+  "_comment": "Curated role personas: each maps to a skill loadout + the matching Workflow Recipe + subagent. Canonical source for the playground onboarding chips (web/app.js) and PERSONAS.md. Keep skill names in sync with skills.json.",
+  "personas": [
+    {
+      "id": "product-manager", "name": "Product Manager", "emoji": "📦",
+      "useWhen": "You own a product area — discovery to launch.",
+      "skills": ["prd-template", "rice-prioritisation", "roadmap-narrative", "metrics-framework", "user-research-synthesis", "executive-update"],
+      "recipe": "ship-a-feature", "subagent": "pm-partner"
+    },
+    {
+      "id": "founder-exec", "name": "Founder / Exec", "emoji": "🚀",
+      "useWhen": "You set direction and answer to a board.",
+      "skills": ["strategy-memo", "decision-memo", "board-pre-read", "capital-allocation", "investor-update", "go-to-market"],
+      "recipe": "grow-a-product", "subagent": "launch-captain"
+    },
+    {
+      "id": "engineering-lead", "name": "Engineering Lead", "emoji": "🛠️",
+      "useWhen": "You own architecture, delivery, and on-call.",
+      "skills": ["technical-spec-template", "architecture-decision-record", "rfc-writer", "code-review-checklist", "incident-postmortem", "runbook-writer"],
+      "recipe": "ship-a-feature", "subagent": null
+    },
+    {
+      "id": "ai-engineer", "name": "AI/ML Engineer", "emoji": "🤖",
+      "useWhen": "You're shipping an AI/LLM feature responsibly.",
+      "skills": ["ai-feature-prd", "rag-design-doc", "agent-spec", "ai-eval-plan", "llm-cost-latency-budget", "model-card"],
+      "recipe": "launch-an-ai-feature", "subagent": null
+    },
+    {
+      "id": "customer-success", "name": "Customer Success", "emoji": "🤝",
+      "useWhen": "You own retention, renewals, and escalations.",
+      "skills": ["cs-health-scorecard", "churn-analysis", "cs-escalation-brief", "renewal-playbook", "qbr-deck", "account-plan"],
+      "recipe": "rescue-an-account", "subagent": "cs-guardian"
+    },
+    {
+      "id": "growth-marketing", "name": "Growth / Marketing", "emoji": "📈",
+      "useWhen": "You own acquisition, activation, and retention loops.",
+      "skills": ["marketing-funnel-plan", "growth-experiment-backlog", "retention-loop-design", "lifecycle-crm-plan", "paid-acquisition-plan", "messaging-framework"],
+      "recipe": "grow-a-product", "subagent": null
+    },
+    {
+      "id": "compliance-lead", "name": "Compliance / Security Lead", "emoji": "🛡️",
+      "useWhen": "You own trust, audits, and regulated data.",
+      "skills": ["soc2-readiness", "gdpr-compliance", "iso-27001-isms", "vendor-security-review", "data-retention-policy", "security-threat-model"],
+      "recipe": null, "subagent": null
+    },
+    {
+      "id": "designer", "name": "Designer", "emoji": "🎨",
+      "useWhen": "You own the experience, from flows to handoff.",
+      "skills": ["figma-design-review", "design-critique", "customer-journey-map", "design-system-audit", "accessibility-audit", "design-handoff-brief"],
+      "recipe": null, "subagent": null
+    }
+  ]
+}

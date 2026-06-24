@@ -17,7 +17,9 @@ let recents = lsGet(RECENT_STORE, []);
 let workspace = lsGet(WORKSPACE_STORE, []);
 
 // Role → a curated starter set of skill names (the "try these first" for each role).
-const ROLES = {
+// Loaded from web/personas.json at startup; this is the fallback if that fetch fails.
+let PERSONAS = [];
+let ROLES = {
   'Product Manager': ['prd-template', 'rice-prioritisation', 'roadmap-narrative', 'executive-update', 'red-team-review', 'metrics-framework'],
   'Founder / Exec': ['executive-update', 'board-deck-narrative', 'investor-update', 'competitor-teardown', 'red-team-review', 'go-to-market'],
   'Customer Success': ['cs-health-scorecard', 'churn-analysis', 'cs-escalation-brief', 'renewal-playbook', 'qbr-deck', 'account-plan'],
@@ -165,6 +167,14 @@ async function init() {
     const fd = await (await fetch('feedback.json', { cache: 'no-store' })).json();
     Object.assign(FEEDBACK, fd.skills || {});
   } catch (_) {}
+  // Curated role personas (loadout + recipe + subagent) drive the onboarding chips.
+  try {
+    const pd = await (await fetch('personas.json')).json();
+    if (pd.personas && pd.personas.length) {
+      PERSONAS = pd.personas;
+      ROLES = Object.fromEntries(PERSONAS.map((p) => [p.name, p.skills]));
+    }
+  } catch (_) {}
 
   try {
     const res = await fetch('skills.json');
@@ -284,11 +294,13 @@ function updateContextStatus() {
 // ---------- Role-based onboarding ----------
 function initOnboarding() {
   const chips = el('roleChips');
+  const emojiFor = (name) => (PERSONAS.find((p) => p.name === name) || {}).emoji || '';
   for (const role of Object.keys(ROLES)) {
     const b = document.createElement('button');
     b.type = 'button';
     b.className = 'role-chip';
-    b.textContent = role;
+    const e = emojiFor(role);
+    b.textContent = e ? `${e} ${role}` : role;
     b.addEventListener('click', () => chooseRole(role));
     chips.appendChild(b);
   }
