@@ -1,0 +1,110 @@
+{
+  "recipes": [
+    {
+      "id": "ship-a-feature",
+      "name": "Ship a Feature",
+      "command": "/ship-a-feature",
+      "lifecycle": "Discover → Decide → Build → Ship",
+      "summary": "Take a raw feature idea from fuzzy brief all the way to a launch plan, end to end.",
+      "skills": [
+        "ambiguity-resolver",
+        "prd-template",
+        "rice-prioritisation",
+        "roadmap-narrative",
+        "go-to-market"
+      ]
+    },
+    {
+      "id": "close-the-quarter",
+      "name": "Close the Quarter",
+      "command": "/close-the-quarter",
+      "lifecycle": "Measure → Communicate",
+      "summary": "Turn the quarter's raw numbers into a leadership-ready story and board deck.",
+      "skills": [
+        "metrics-framework",
+        "churn-analysis",
+        "executive-update",
+        "board-deck-narrative"
+      ]
+    },
+    {
+      "id": "launch-a-product",
+      "name": "Launch a Product",
+      "command": "/launch-a-product",
+      "lifecycle": "Decide → Ship",
+      "summary": "Go from competitive landscape to positioning to a fully checklisted launch and press release.",
+      "skills": [
+        "competitor-teardown",
+        "product-positioning-doc",
+        "go-to-market",
+        "product-launch-checklist",
+        "press-release"
+      ]
+    },
+    {
+      "id": "rescue-an-account",
+      "name": "Rescue an Account",
+      "command": "/rescue-an-account",
+      "lifecycle": "Measure → Communicate",
+      "summary": "Diagnose an at-risk customer and build the full save play through to renewal.",
+      "skills": [
+        "cs-health-scorecard",
+        "churn-analysis",
+        "cs-escalation-brief",
+        "renewal-playbook"
+      ]
+    },
+    {
+      "id": "run-discovery",
+      "name": "Run Discovery",
+      "command": "/run-discovery",
+      "lifecycle": "Discover → Decide",
+      "summary": "From a vague opportunity to validated insight and a prioritised next step.",
+      "skills": [
+        "ambiguity-resolver",
+        "discovery-interview-guide",
+        "user-research-synthesis",
+        "rice-prioritisation"
+      ]
+    },
+    {
+      "id": "repurpose",
+      "name": "Repurpose Content",
+      "command": "/repurpose",
+      "lifecycle": "One source → many platforms",
+      "summary": "Turn one blog post, video, or idea into a full platform-native content pack — thread, LinkedIn, newsletter, carousel, and short-form script — with sharpened hooks and a thumbnail concept.",
+      "skills": [
+        "content-repurposer",
+        "hook-writer",
+        "thumbnail-creator"
+      ]
+    },
+    {
+      "id": "launch-an-ai-feature",
+      "name": "Launch an AI Feature",
+      "command": "/launch-an-ai-feature",
+      "lifecycle": "Spec → Design → Evaluate → Budget → Document",
+      "summary": "Take an AI/LLM feature idea from a probabilistic-aware PRD through retrieval/agent design, an eval plan with a ship bar, a cost & latency budget, and a launch-ready model card.",
+      "skills": [
+        "ai-feature-prd",
+        "rag-design-doc",
+        "ai-eval-plan",
+        "llm-cost-latency-budget",
+        "model-card"
+      ]
+    },
+    {
+      "id": "grow-a-product",
+      "name": "Grow a Product",
+      "command": "/grow-a-product",
+      "lifecycle": "Diagnose → Experiment → Retain → Nurture",
+      "summary": "Turn a growth goal into a full-funnel diagnosis, a prioritised experiment backlog, a retention loop, and the lifecycle journeys that nurture users — a joined-up growth plan.",
+      "skills": [
+        "marketing-funnel-plan",
+        "growth-experiment-backlog",
+        "retention-loop-design",
+        "lifecycle-crm-plan"
+      ]
+    }
+  ]
+}

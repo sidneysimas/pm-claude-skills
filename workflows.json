@@ -79,6 +79,33 @@
         { "skill": "hook-writer", "produces": "stronger, scroll-stopping hooks for each piece", "passes": "the winning hooks" },
         { "skill": "thumbnail-creator", "produces": "a thumbnail concept for the video version", "passes": null }
       ]
+    },
+    {
+      "id": "launch-an-ai-feature",
+      "command": "/launch-an-ai-feature",
+      "name": "Launch an AI Feature",
+      "lifecycle": "Spec → Design → Evaluate → Budget → Document",
+      "summary": "Take an AI/LLM feature idea from a probabilistic-aware PRD through retrieval/agent design, an eval plan with a ship bar, a cost & latency budget, and a launch-ready model card.",
+      "steps": [
+        { "skill": "ai-feature-prd", "produces": "a PRD designed for a probabilistic system — uncertainty UX, guardrails, fallback, and a quality bar", "passes": "the feature scope, stakes, and quality bar" },
+        { "skill": "rag-design-doc", "produces": "the retrieval/generation design (chunking, retrieval, reranking, grounding, failure modes)", "passes": "the system design and grounding approach" },
+        { "skill": "ai-eval-plan", "produces": "an eval harness: datasets, rubrics, baselines, a ship threshold, and a regression gate", "passes": "the metrics and the ship bar" },
+        { "skill": "llm-cost-latency-budget", "produces": "per-request token math, model tiering, caching, p95 targets, and spend guardrails", "passes": "the cost/latency envelope" },
+        { "skill": "model-card", "produces": "a launch-ready model card: intended use, sliced eval, limitations, and a rollback trigger", "passes": null }
+      ]
+    },
+    {
+      "id": "grow-a-product",
+      "command": "/grow-a-product",
+      "name": "Grow a Product",
+      "lifecycle": "Diagnose → Experiment → Retain → Nurture",
+      "summary": "Turn a growth goal into a full-funnel diagnosis, a prioritised experiment backlog, a retention loop, and the lifecycle journeys that nurture users — a joined-up growth plan.",
+      "steps": [
+        { "skill": "marketing-funnel-plan", "produces": "a full-funnel map with the biggest leak identified and a 90-day focus", "passes": "the focus stage and the metric to move" },
+        { "skill": "growth-experiment-backlog", "produces": "a prioritised, properly-powered experiment backlog (ICE) against that stage", "passes": "the top experiments and the target metric" },
+        { "skill": "retention-loop-design", "produces": "a retention/engagement loop (trigger→action→reward→investment) and activation path", "passes": "the loop and the habit milestone" },
+        { "skill": "lifecycle-crm-plan", "produces": "behaviour-triggered lifecycle journeys that drive the loop, with holdouts and suppression", "passes": null }
+      ]
     }
   ]
 }

@@ -10,6 +10,7 @@
 <script src="https://cdn.jsdelivr.net/npm/marked@12.0.0/marked.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.9/dist/purify.min.js"></script>
 <script src="providers.js"></script>
+<script src="brain.js"></script>
 <style>
   .canvas-wrap { display: grid; grid-template-columns: 300px 1fr; gap: 18px; max-width: 1200px; margin: 0 auto; padding: 16px 22px 70px; }
   .palette { border: 1px solid var(--border); border-radius: 12px; background: var(--panel); padding: 12px; height: fit-content; position: sticky; top: 12px; max-height: 90vh; overflow: auto; }
@@ -64,6 +65,9 @@
   </aside>
   <main>
     <div class="bar">
+      <select id="recipeSelect" class="ghost" title="Load a prebuilt recipe — a curated chain you can run or tweak">
+        <option value="">📋 Load a recipe…</option>
+      </select>
       <button id="runBtn" class="primary" type="button">▶ Run pipeline</button>
       <button id="stopBtn" class="ghost" type="button" hidden>Stop</button>
       <button id="clearBtn" class="ghost" type="button">Clear</button>
@@ -92,8 +96,25 @@ async function init(){
   el('shareBtn').addEventListener('click',shareRecipe);
   try{ SKILLS=(await (await fetch('skills.json')).json()).skills; }catch(e){ el('paletteList').innerHTML='<p class="empty-msg">Run node web/build-skills.mjs</p>'; return; }
   el('paletteSearch').placeholder='Search '+SKILLS.length+' skills to add…';
+  await loadRecipes();
   loadFromUrl();
   renderPalette(); renderPipe();
+}
+
+// Prebuilt recipes (curated skill chains) the user can load into the pipeline and tweak.
+let RECIPES=[];
+async function loadRecipes(){
+  try{ RECIPES=(await (await fetch('workflows.json')).json()).recipes||[]; }catch(_){ return; }
+  const sel=el('recipeSelect'); if(!sel) return;
+  RECIPES.forEach((r,i)=>{ const o=document.createElement('option'); o.value=String(i); o.textContent=r.name+' · '+r.skills.length+' skills'; sel.appendChild(o); });
+  sel.addEventListener('change',()=>{
+    const r=RECIPES[+sel.value]; sel.value='';
+    if(!r) return;
+    PIPE=r.skills.filter(n=>SKILLS.some(s=>s.name===n));
+    if(!el('kickoff').value.trim()) el('kickoff').placeholder='Kickoff for "'+r.name+'" — '+r.summary;
+    renderPipe();
+    setStatus('Loaded "'+r.name+'" ('+r.lifecycle+'). Edit the chain or hit Run.');
+  });
 }
 
 function renderPalette(){
@@ -136,6 +157,9 @@ async function run(){
   if(window.pmTrack) pmTrack('canvas/run/'+PIPE.length+'-skills');
   el('runBtn').disabled=true; el('stopBtn').hidden=false; controller=new AbortController();
   let upstream='';
+  // Ground the whole chain in the Brain when it's enabled (recipes are brain-aware).
+  const brainBlock=(window.PMBrain&&PMBrain.isEnabled())?('\n\n'+PMBrain.recallBlock()):'';
+  if(brainBlock) setStatus('🧠 Grounding this recipe in your brain…');
   try{
     for(let i=0;i<PIPE.length;i++){
       const s=SKILLS.find(x=>x.name===PIPE[i]); if(!s) continue;
@@ -143,7 +167,7 @@ async function run(){
       const node=el('node-'+i); if(node) node.classList.add('running');
       if(i>0) el('arrow-'+(i-1))?.classList.add('flowing'); // data flowing from the previous step
       const out=el('out-'+i); out.hidden=false; out.innerHTML='';
-      const system=s.instructions+'\n\n---\nExecute this skill now and produce the complete output. Do not ask questions; note any assumptions.';
+      const system=s.instructions+'\n\n---\nExecute this skill now and produce the complete output. Do not ask questions; note any assumptions.'+brainBlock;
       const userMsg = i===0
         ? kickoff
         : `Overall goal:\n${kickoff}\n\nBuild directly on the upstream work below (carry its decisions forward):\n\n${upstream}`;

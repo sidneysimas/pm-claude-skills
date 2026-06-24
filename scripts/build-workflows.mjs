@@ -57,14 +57,25 @@ lines.push('**Add your own:** define it in [`workflows.json`](workflows.json), a
 const md = lines.join('\n');
 const target = join(root, 'WORKFLOWS.md');
 
+// Slim recipe data for the Workflow Canvas to load (id, name, summary, lifecycle, ordered skills).
+const webOut = join(root, 'web', 'workflows.json');
+const webData = JSON.stringify({
+  recipes: workflows.map((w) => ({
+    id: w.id, name: w.name, command: w.command, lifecycle: w.lifecycle, summary: w.summary,
+    skills: w.steps.map((s) => s.skill),
+  })),
+}, null, 2) + '\n';
+
 if (process.argv.includes('--check')) {
   const current = existsSync(target) ? readFileSync(target, 'utf8') : '';
-  if (current !== md) {
-    console.error('WORKFLOWS.md is out of sync with workflows.json. Run: node scripts/build-workflows.mjs');
+  const curWeb = existsSync(webOut) ? readFileSync(webOut, 'utf8') : '';
+  if (current !== md || curWeb !== webData) {
+    console.error('WORKFLOWS.md / web/workflows.json out of sync with workflows.json. Run: node scripts/build-workflows.mjs');
     process.exit(1);
   }
-  console.log('WORKFLOWS.md is in sync.');
+  console.log('WORKFLOWS.md + web/workflows.json are in sync.');
 } else {
   writeFileSync(target, md);
-  console.log(`Wrote WORKFLOWS.md — ${workflows.length} recipes, all skills + commands validated.`);
+  writeFileSync(webOut, webData);
+  console.log(`Wrote WORKFLOWS.md + web/workflows.json — ${workflows.length} recipes, all skills + commands validated.`);
 }
