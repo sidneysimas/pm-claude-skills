@@ -11,7 +11,7 @@ const WORKFLOWS_URL = 'https://raw.githubusercontent.com/mohitagw15856/pm-claude
 const SERVER = {
   name: 'pm-claude-skills',
   title: 'PM Skills — Professional Agent Skills',
-  version: 'remote-1.0.0',
+  version: 'remote-1.1.0',
   websiteUrl: 'https://mohitagw15856.github.io/pm-claude-skills/',
   icons: [{ src: 'https://raw.githubusercontent.com/mohitagw15856/pm-claude-skills/main/icon.svg', mimeType: 'image/svg+xml', sizes: ['any'] }],
 };
