@@ -9,6 +9,14 @@
   },
   "plugins": [
     {
+      "name": "pm-ai",
+      "description": "AI/ML engineering skills for shipping AI features responsibly: Model Card, AI Eval Plan, RAG Design Doc, Agent Spec, Dataset Datasheet, AI Feature PRD, and LLM Cost & Latency Budget.",
+      "version": "1.0.0",
+      "category": "productivity",
+      "source": "./plugins/pm-ai",
+      "homepage": "https://github.com/mohitagw15856/pm-claude-skills"
+    },
+    {
       "name": "pm-essentials",
       "description": "Core PM skills: PRD Template, Meeting Notes, Stakeholder Update, User Research Synthesis, Competitive Analysis, Word Doc Tracked Changes. The essentials every PM needs first.",
       "version": "3.1.0",

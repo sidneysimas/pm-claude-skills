@@ -3,7 +3,7 @@
 > Auto-generated from `skills/*/SKILL.md` by `scripts/build-exports.mjs`.
 > **Do not edit these files by hand** — edit the source skill and regenerate.
 
-207 skills exported. Copy a `.mdc rule` into the tool to use it.
+214 skills exported. Copy a `.mdc rule` into the tool to use it.
 
 | Skill | Bundle | Path |
 |---|---|---|
@@ -14,7 +14,10 @@
 | Account Plan | `pm-sales` | `pm-sales/account-plan/account-plan.md` |
 | Action Runner | `pm-cross` | `pm-cross/action-runner/action-runner.md` |
 | AEO Optimizer | `pm-writers` | `pm-writers/aeo-optimizer/aeo-optimizer.md` |
+| Agent Spec | `pm-ai` | `pm-ai/agent-spec/agent-spec.md` |
 | AI Ethics Review | `pm-advanced` | `pm-advanced/ai-ethics-review/ai-ethics-review.md` |
+| AI Eval Plan | `pm-ai` | `pm-ai/ai-eval-plan/ai-eval-plan.md` |
+| AI Feature PRD | `pm-ai` | `pm-ai/ai-feature-prd/ai-feature-prd.md` |
 | AI Product Canvas | `pm-advanced` | `pm-advanced/ai-product-canvas/ai-product-canvas.md` |
 | Ambiguity Resolver | `pm-strategy` | `pm-strategy/ambiguity-resolver/ambiguity-resolver.md` |
 | API Docs Writer | `pm-engineering` | `pm-engineering/api-docs-writer/api-docs-writer.md` |
@@ -58,6 +61,7 @@
 | Data Quality Audit | `pm-data` | `pm-data/data-quality-audit/data-quality-audit.md` |
 | Database Migration Plan | `pm-engineering` | `pm-engineering/database-migration-plan/database-migration-plan.md` |
 | Database Schema Design | `pm-engineering` | `pm-engineering/database-schema-design/database-schema-design.md` |
+| Dataset Datasheet | `pm-ai` | `pm-ai/dataset-datasheet/dataset-datasheet.md` |
 | Debugging Log Analyser | `pm-engineering` | `pm-engineering/debugging-log-analyser/debugging-log-analyser.md` |
 | Demand Letter | `pm-legal` | `pm-legal/demand-letter/demand-letter.md` |
 | Dependency Audit | `pm-engineering` | `pm-engineering/dependency-audit/dependency-audit.md` |
@@ -117,6 +121,7 @@
 | Legal Brief | `pm-legal` | `pm-legal/legal-brief/legal-brief.md` |
 | Lesson Plan | `pm-education` | `pm-education/lesson-plan/lesson-plan.md` |
 | Literature Review | `pm-research` | `pm-research/literature-review/literature-review.md` |
+| LLM Cost & Latency Budget | `pm-ai` | `pm-ai/llm-cost-latency-budget/llm-cost-latency-budget.md` |
 | Load Testing Plan | `pm-engineering` | `pm-engineering/load-testing-plan/load-testing-plan.md` |
 | Local Dev Setup | `pm-engineering` | `pm-engineering/local-dev-setup/local-dev-setup.md` |
 | Media Pitch | `pm-gtm` | `pm-gtm/media-pitch/media-pitch.md` |
@@ -124,6 +129,7 @@
 | Metric Tree Builder | `pm-data` | `pm-data/metric-tree-builder/metric-tree-builder.md` |
 | Metrics Framework | `pm-data` | `pm-data/metrics-framework/metrics-framework.md` |
 | Microservices Decomposition | `pm-engineering` | `pm-engineering/microservices-decomposition/microservices-decomposition.md` |
+| Model Card | `pm-ai` | `pm-ai/model-card/model-card.md` |
 | Monitoring Setup Guide | `pm-engineering` | `pm-engineering/monitoring-setup-guide/monitoring-setup-guide.md` |
 | Morning Intelligence | `pm-operations` | `pm-operations/morning-intelligence/morning-intelligence.md` |
 | Multi-Source Signal Synthesiser | `pm-advanced` | `pm-advanced/multi-source-signal-synthesiser/multi-source-signal-synthesiser.md` |
@@ -156,6 +162,7 @@
 | QBR Deck | `pm-cs` | `pm-cs/qbr-deck/qbr-deck.md` |
 | Quiz Generator | `pm-education` | `pm-education/quiz-generator/quiz-generator.md` |
 | RACI Matrix | `pm-operations` | `pm-operations/raci-matrix/raci-matrix.md` |
+| RAG Design Doc | `pm-ai` | `pm-ai/rag-design-doc/rag-design-doc.md` |
 | Red-Team Review | `pm-cross` | `pm-cross/red-team-review/red-team-review.md` |
 | Redundancy Consultation | `pm-hr` | `pm-hr/redundancy-consultation/redundancy-consultation.md` |
 | Regex Builder & Explainer | `pm-engineering` | `pm-engineering/regex-builder/regex-builder.md` |

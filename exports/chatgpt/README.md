@@ -3,7 +3,7 @@
 > Auto-generated from `skills/*/SKILL.md` by `scripts/build-exports.mjs`.
 > **Do not edit these files by hand** — edit the source skill and regenerate.
 
-207 skills exported. Copy a `SYSTEM_PROMPT.md` into the tool to use it.
+214 skills exported. Copy a `SYSTEM_PROMPT.md` into the tool to use it.
 
 | Skill | Bundle | Path |
 |---|---|---|
@@ -14,7 +14,10 @@
 | Account Plan | `pm-sales` | `pm-sales/account-plan/SYSTEM_PROMPT.md` |
 | Action Runner | `pm-cross` | `pm-cross/action-runner/SYSTEM_PROMPT.md` |
 | AEO Optimizer | `pm-writers` | `pm-writers/aeo-optimizer/SYSTEM_PROMPT.md` |
+| Agent Spec | `pm-ai` | `pm-ai/agent-spec/SYSTEM_PROMPT.md` |
 | AI Ethics Review | `pm-advanced` | `pm-advanced/ai-ethics-review/SYSTEM_PROMPT.md` |
+| AI Eval Plan | `pm-ai` | `pm-ai/ai-eval-plan/SYSTEM_PROMPT.md` |
+| AI Feature PRD | `pm-ai` | `pm-ai/ai-feature-prd/SYSTEM_PROMPT.md` |
 | AI Product Canvas | `pm-advanced` | `pm-advanced/ai-product-canvas/SYSTEM_PROMPT.md` |
 | Ambiguity Resolver | `pm-strategy` | `pm-strategy/ambiguity-resolver/SYSTEM_PROMPT.md` |
 | API Docs Writer | `pm-engineering` | `pm-engineering/api-docs-writer/SYSTEM_PROMPT.md` |
@@ -58,6 +61,7 @@
 | Data Quality Audit | `pm-data` | `pm-data/data-quality-audit/SYSTEM_PROMPT.md` |
 | Database Migration Plan | `pm-engineering` | `pm-engineering/database-migration-plan/SYSTEM_PROMPT.md` |
 | Database Schema Design | `pm-engineering` | `pm-engineering/database-schema-design/SYSTEM_PROMPT.md` |
+| Dataset Datasheet | `pm-ai` | `pm-ai/dataset-datasheet/SYSTEM_PROMPT.md` |
 | Debugging Log Analyser | `pm-engineering` | `pm-engineering/debugging-log-analyser/SYSTEM_PROMPT.md` |
 | Demand Letter | `pm-legal` | `pm-legal/demand-letter/SYSTEM_PROMPT.md` |
 | Dependency Audit | `pm-engineering` | `pm-engineering/dependency-audit/SYSTEM_PROMPT.md` |
@@ -117,6 +121,7 @@
 | Legal Brief | `pm-legal` | `pm-legal/legal-brief/SYSTEM_PROMPT.md` |
 | Lesson Plan | `pm-education` | `pm-education/lesson-plan/SYSTEM_PROMPT.md` |
 | Literature Review | `pm-research` | `pm-research/literature-review/SYSTEM_PROMPT.md` |
+| LLM Cost & Latency Budget | `pm-ai` | `pm-ai/llm-cost-latency-budget/SYSTEM_PROMPT.md` |
 | Load Testing Plan | `pm-engineering` | `pm-engineering/load-testing-plan/SYSTEM_PROMPT.md` |
 | Local Dev Setup | `pm-engineering` | `pm-engineering/local-dev-setup/SYSTEM_PROMPT.md` |
 | Media Pitch | `pm-gtm` | `pm-gtm/media-pitch/SYSTEM_PROMPT.md` |
@@ -124,6 +129,7 @@
 | Metric Tree Builder | `pm-data` | `pm-data/metric-tree-builder/SYSTEM_PROMPT.md` |
 | Metrics Framework | `pm-data` | `pm-data/metrics-framework/SYSTEM_PROMPT.md` |
 | Microservices Decomposition | `pm-engineering` | `pm-engineering/microservices-decomposition/SYSTEM_PROMPT.md` |
+| Model Card | `pm-ai` | `pm-ai/model-card/SYSTEM_PROMPT.md` |
 | Monitoring Setup Guide | `pm-engineering` | `pm-engineering/monitoring-setup-guide/SYSTEM_PROMPT.md` |
 | Morning Intelligence | `pm-operations` | `pm-operations/morning-intelligence/SYSTEM_PROMPT.md` |
 | Multi-Source Signal Synthesiser | `pm-advanced` | `pm-advanced/multi-source-signal-synthesiser/SYSTEM_PROMPT.md` |
@@ -156,6 +162,7 @@
 | QBR Deck | `pm-cs` | `pm-cs/qbr-deck/SYSTEM_PROMPT.md` |
 | Quiz Generator | `pm-education` | `pm-education/quiz-generator/SYSTEM_PROMPT.md` |
 | RACI Matrix | `pm-operations` | `pm-operations/raci-matrix/SYSTEM_PROMPT.md` |
+| RAG Design Doc | `pm-ai` | `pm-ai/rag-design-doc/SYSTEM_PROMPT.md` |
 | Red-Team Review | `pm-cross` | `pm-cross/red-team-review/SYSTEM_PROMPT.md` |
 | Redundancy Consultation | `pm-hr` | `pm-hr/redundancy-consultation/SYSTEM_PROMPT.md` |
 | Regex Builder & Explainer | `pm-engineering` | `pm-engineering/regex-builder/SYSTEM_PROMPT.md` |
