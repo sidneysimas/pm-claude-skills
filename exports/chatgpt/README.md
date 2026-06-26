@@ -3,7 +3,7 @@
 > Auto-generated from `skills/*/SKILL.md` by `scripts/build-exports.mjs`.
 > **Do not edit these files by hand** — edit the source skill and regenerate.
 
-238 skills exported. Copy a `SYSTEM_PROMPT.md` into the tool to use it.
+244 skills exported. Copy a `SYSTEM_PROMPT.md` into the tool to use it.
 
 | Skill | Bundle | Path |
 |---|---|---|
@@ -54,6 +54,7 @@
 | Context Mode | `pm-engineering` | `pm-engineering/context-mode/SYSTEM_PROMPT.md` |
 | Contract Review | `pm-legal` | `pm-legal/contract-review/SYSTEM_PROMPT.md` |
 | Conversion Rate Optimization | `pm-growth` | `pm-growth/conversion-rate-optimization/SYSTEM_PROMPT.md` |
+| Cover Letter | `pm-personal` | `pm-personal/cover-letter/SYSTEM_PROMPT.md` |
 | Creator Brand Kit | `pm-creator` | `pm-creator/creator-brand-kit/SYSTEM_PROMPT.md` |
 | Creator Media Kit | `pm-creator` | `pm-creator/creator-media-kit/SYSTEM_PROMPT.md` |
 | Customer Escalation Brief | `pm-cs` | `pm-cs/cs-escalation-brief/SYSTEM_PROMPT.md` |
@@ -132,6 +133,7 @@
 | Legal Brief | `pm-legal` | `pm-legal/legal-brief/SYSTEM_PROMPT.md` |
 | Lesson Plan | `pm-education` | `pm-education/lesson-plan/SYSTEM_PROMPT.md` |
 | Lifecycle / CRM Plan | `pm-growth` | `pm-growth/lifecycle-crm-plan/SYSTEM_PROMPT.md` |
+| LinkedIn Profile | `pm-personal` | `pm-personal/linkedin-profile/SYSTEM_PROMPT.md` |
 | Literature Review | `pm-research` | `pm-research/literature-review/SYSTEM_PROMPT.md` |
 | LLM Cost & Latency Budget | `pm-ai` | `pm-ai/llm-cost-latency-budget/SYSTEM_PROMPT.md` |
 | Load Testing Plan | `pm-engineering` | `pm-engineering/load-testing-plan/SYSTEM_PROMPT.md` |
@@ -155,13 +157,16 @@
 | Onboarding Plan | `pm-hr` | `pm-hr/onboarding-plan/SYSTEM_PROMPT.md` |
 | On-Call Runbook | `pm-engineering` | `pm-engineering/oncall-runbook/SYSTEM_PROMPT.md` |
 | One-on-One Prep | `pm-career` | `pm-career/one-on-one-prep/SYSTEM_PROMPT.md` |
+| One-Pager | `pm-personal` | `pm-personal/one-pager/SYSTEM_PROMPT.md` |
 | Paid Acquisition Plan | `pm-growth` | `pm-growth/paid-acquisition-plan/SYSTEM_PROMPT.md` |
 | Parent Communication | `pm-education` | `pm-education/parent-communication/SYSTEM_PROMPT.md` |
 | Partnership Proposal | `pm-sales` | `pm-sales/partnership-proposal/SYSTEM_PROMPT.md` |
 | Patient Communication | `pm-research` | `pm-research/patient-communication/SYSTEM_PROMPT.md` |
 | Performance Budget | `pm-engineering` | `pm-engineering/performance-budget/SYSTEM_PROMPT.md` |
 | Performance Review | `pm-people` | `pm-people/performance-review/SYSTEM_PROMPT.md` |
+| Personal Bio | `pm-personal` | `pm-personal/personal-bio/SYSTEM_PROMPT.md` |
 | PM Weekly Review | `pm-rituals` | `pm-rituals/pm-weekly-review/SYSTEM_PROMPT.md` |
+| Portfolio Page | `pm-personal` | `pm-personal/portfolio-page/SYSTEM_PROMPT.md` |
 | PPTX Slide Auditor | `pm-delivery` | `pm-delivery/pptx-slide-auditor/SYSTEM_PROMPT.md` |
 | PR Description Writer | `pm-engineering` | `pm-engineering/pr-description-writer/SYSTEM_PROMPT.md` |
 | PRD Template | `pm-essentials` | `pm-essentials/prd-template/SYSTEM_PROMPT.md` |
@@ -186,6 +191,7 @@
 | Regex Builder & Explainer | `pm-engineering` | `pm-engineering/regex-builder/SYSTEM_PROMPT.md` |
 | Renewal Playbook | `pm-cs` | `pm-cs/renewal-playbook/SYSTEM_PROMPT.md` |
 | Research Protocol | `pm-research` | `pm-research/research-protocol/SYSTEM_PROMPT.md` |
+| Resume | `pm-personal` | `pm-personal/resume/SYSTEM_PROMPT.md` |
 | Retention Analysis | `pm-analytics` | `pm-analytics/retention-analysis/SYSTEM_PROMPT.md` |
 | Retention Loop Design | `pm-growth` | `pm-growth/retention-loop-design/SYSTEM_PROMPT.md` |
 | Retrospective Analysis | `pm-delivery` | `pm-delivery/retro-analysis/SYSTEM_PROMPT.md` |

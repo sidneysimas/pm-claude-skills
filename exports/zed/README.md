@@ -3,7 +3,7 @@
 > Auto-generated from `skills/*/SKILL.md` by `scripts/build-exports.mjs`.
 > **Do not edit these files by hand** — edit the source skill and regenerate.
 
-238 skills exported. Copy a `.mdc rule` into the tool to use it.
+244 skills exported. Copy a `.mdc rule` into the tool to use it.
 
 | Skill | Bundle | Path |
 |---|---|---|
@@ -54,6 +54,7 @@
 | Context Mode | `pm-engineering` | `pm-engineering/context-mode/context-mode.md` |
 | Contract Review | `pm-legal` | `pm-legal/contract-review/contract-review.md` |
 | Conversion Rate Optimization | `pm-growth` | `pm-growth/conversion-rate-optimization/conversion-rate-optimization.md` |
+| Cover Letter | `pm-personal` | `pm-personal/cover-letter/cover-letter.md` |
 | Creator Brand Kit | `pm-creator` | `pm-creator/creator-brand-kit/creator-brand-kit.md` |
 | Creator Media Kit | `pm-creator` | `pm-creator/creator-media-kit/creator-media-kit.md` |
 | Customer Escalation Brief | `pm-cs` | `pm-cs/cs-escalation-brief/cs-escalation-brief.md` |
@@ -132,6 +133,7 @@
 | Legal Brief | `pm-legal` | `pm-legal/legal-brief/legal-brief.md` |
 | Lesson Plan | `pm-education` | `pm-education/lesson-plan/lesson-plan.md` |
 | Lifecycle / CRM Plan | `pm-growth` | `pm-growth/lifecycle-crm-plan/lifecycle-crm-plan.md` |
+| LinkedIn Profile | `pm-personal` | `pm-personal/linkedin-profile/linkedin-profile.md` |
 | Literature Review | `pm-research` | `pm-research/literature-review/literature-review.md` |
 | LLM Cost & Latency Budget | `pm-ai` | `pm-ai/llm-cost-latency-budget/llm-cost-latency-budget.md` |
 | Load Testing Plan | `pm-engineering` | `pm-engineering/load-testing-plan/load-testing-plan.md` |
@@ -155,13 +157,16 @@
 | Onboarding Plan | `pm-hr` | `pm-hr/onboarding-plan/onboarding-plan.md` |
 | On-Call Runbook | `pm-engineering` | `pm-engineering/oncall-runbook/oncall-runbook.md` |
 | One-on-One Prep | `pm-career` | `pm-career/one-on-one-prep/one-on-one-prep.md` |
+| One-Pager | `pm-personal` | `pm-personal/one-pager/one-pager.md` |
 | Paid Acquisition Plan | `pm-growth` | `pm-growth/paid-acquisition-plan/paid-acquisition-plan.md` |
 | Parent Communication | `pm-education` | `pm-education/parent-communication/parent-communication.md` |
 | Partnership Proposal | `pm-sales` | `pm-sales/partnership-proposal/partnership-proposal.md` |
 | Patient Communication | `pm-research` | `pm-research/patient-communication/patient-communication.md` |
 | Performance Budget | `pm-engineering` | `pm-engineering/performance-budget/performance-budget.md` |
 | Performance Review | `pm-people` | `pm-people/performance-review/performance-review.md` |
+| Personal Bio | `pm-personal` | `pm-personal/personal-bio/personal-bio.md` |
 | PM Weekly Review | `pm-rituals` | `pm-rituals/pm-weekly-review/pm-weekly-review.md` |
+| Portfolio Page | `pm-personal` | `pm-personal/portfolio-page/portfolio-page.md` |
 | PPTX Slide Auditor | `pm-delivery` | `pm-delivery/pptx-slide-auditor/pptx-slide-auditor.md` |
 | PR Description Writer | `pm-engineering` | `pm-engineering/pr-description-writer/pr-description-writer.md` |
 | PRD Template | `pm-essentials` | `pm-essentials/prd-template/prd-template.md` |
@@ -186,6 +191,7 @@
 | Regex Builder & Explainer | `pm-engineering` | `pm-engineering/regex-builder/regex-builder.md` |
 | Renewal Playbook | `pm-cs` | `pm-cs/renewal-playbook/renewal-playbook.md` |
 | Research Protocol | `pm-research` | `pm-research/research-protocol/research-protocol.md` |
+| Resume | `pm-personal` | `pm-personal/resume/resume.md` |
 | Retention Analysis | `pm-analytics` | `pm-analytics/retention-analysis/retention-analysis.md` |
 | Retention Loop Design | `pm-growth` | `pm-growth/retention-loop-design/retention-loop-design.md` |
 | Retrospective Analysis | `pm-delivery` | `pm-delivery/retro-analysis/retro-analysis.md` |
