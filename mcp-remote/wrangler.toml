@@ -5,3 +5,21 @@ compatibility_date = "2025-01-01"
 # Deploy with:  npx wrangler deploy
 # After deploy, Wrangler prints your URL (e.g. https://pm-skills-mcp.<you>.workers.dev).
 # Add that URL as an MCP / connector endpoint in ChatGPT, Claude.ai, or Cursor.
+
+# ── Optional: "Try Claude free, no key" (POST /try) — OFF until you enable it ──
+# Sponsors a few free Claude (Haiku) runs per visitor on YOUR key, hard-capped so
+# worst-case spend is bounded (default 5/IP/day, 300/day global). It FAILS CLOSED:
+# without BOTH the secret and the KV binding below, /try refuses and the playground
+# hides the option — nothing is ever spent unintentionally.
+#
+# To turn it on:
+#   1. npx wrangler kv namespace create TRY_KV
+#   2. paste the printed id below and uncomment the block
+#   3. npx wrangler secret put ANTHROPIC_API_KEY     # your Claude key
+#   4. npx wrangler deploy
+# Tune caps in src/index.js (the TRY object). Kill switch without redeploy:
+#   npx wrangler secret put TRY_ENABLED   → enter: false
+#
+# [[kv_namespaces]]
+# binding = "TRY_KV"
+# id = "<your-kv-namespace-id>"

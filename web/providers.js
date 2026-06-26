@@ -84,6 +84,35 @@
     // buildReq/delta/errOf are unused — stream() routes local providers to streamLocal().
   };
 
+  // Sponsored "try Claude free, no key" — calls the hosted Worker's capped /try endpoint
+  // (the owner pays, hard-limited). No key from the user. Only usable when the deployment
+  // has it enabled; the UI hides it otherwise. Non-streaming (the proxy returns full text).
+  var TRY_ENDPOINT = 'https://pm-skills-mcp.pm-claude-skills.workers.dev/try';
+  PROVIDERS.tryclaude = {
+    name: 'Claude (free trial)', keyStore: 'pm_try_noop', local: true, proxy: true, free: true,
+    placeholder: '(no key — a few free Claude runs, on the house)', keyUrl: 'https://mohitagw15856.github.io/pm-claude-skills/',
+    models: [['claude-haiku', 'Claude Haiku (free trial)']],
+  };
+  async function streamTry(opts) {
+    var res = await fetch(TRY_ENDPOINT, {
+      method: 'POST', headers: { 'content-type': 'application/json' }, signal: opts.signal,
+      body: JSON.stringify({ system: opts.system || '', prompt: opts.userMessage || '' }),
+    });
+    var data = await res.json().catch(function () { return {}; });
+    if (!res.ok) throw new Error(data.message || 'Free Claude trial unavailable — use a free Gemini key or your own key.');
+    var text = data.text || '';
+    if (opts.onDelta) opts.onDelta(text);
+    return text;
+  }
+  // Probe whether the free trial is live on this deployment (so the UI can show/hide it).
+  var _tryEnabled = null;
+  async function tryEnabled() {
+    if (_tryEnabled !== null) return _tryEnabled;
+    try { var r = await fetch(TRY_ENDPOINT, { method: 'GET' }); var j = await r.json(); _tryEnabled = !!j.enabled; }
+    catch (_) { _tryEnabled = false; }
+    return _tryEnabled;
+  }
+
   // Lazy WebLLM engine (loaded only when someone actually picks the in-browser provider).
   var _engine = null, _engineModel = null;
   async function getEngine(model, onProgress) {
@@ -166,12 +195,21 @@
     if (kf) kf.addEventListener('input', function (e) { localStorage.setItem(current().keyStore, e.target.value.trim()); });
     var ms = d.getElementById('model');
     if (ms) ms.addEventListener('change', function (e) { localStorage.setItem(modelStoreKey(providerId()), e.target.value); });
+    // The free-Claude-trial option only makes sense when the deployment has it enabled —
+    // remove it otherwise (and fall back if it was the saved choice).
+    if (ps) {
+      var opt = ps.querySelector('option[value="tryclaude"]');
+      if (opt) tryEnabled().then(function (on) {
+        if (!on) { opt.remove(); if (providerId() === 'tryclaude') { localStorage.setItem(PROVIDER_STORE, 'gemini'); ps.value = 'gemini'; applyProvider(); } }
+      });
+    }
   }
 
   // Provider-aware SSE streaming. opts: {key, model, system, userMessage, signal, onDelta(acc)}.
   // Returns the full accumulated text.
   async function stream(opts) {
     var prov = current();
+    if (prov.proxy) return streamTry(opts);
     if (prov.local) return streamLocal(opts);
     var req = prov.buildReq(opts);
     var res = await fetch(req.url, { method: 'POST', headers: req.headers, body: JSON.stringify(req.body), signal: opts.signal });

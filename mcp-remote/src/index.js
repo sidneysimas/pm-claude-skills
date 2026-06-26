@@ -275,10 +275,64 @@ async function handleRest(url) {
   return jsonResponse({ error: 'Unknown endpoint. See GET /v1' }, 404);
 }
 
+// ── "Try Claude free, no key" — a SPONSORED, CAPPED proxy ────────────────────
+// Ships OFF. It only runs when you provision (a) the ANTHROPIC_API_KEY secret and
+// (b) a KV namespace bound as TRY_KV (for the rate-limit counters). It fails CLOSED:
+// if the key OR the KV binding is missing, it refuses — so you can NEVER spend
+// unbounded. Guards, in order: kill-switch env → key present → KV present →
+// per-IP daily cap → global daily cap. Uses cheap Haiku + a low token cap, so the
+// global cap bounds your worst-case daily spend to a few dollars. Heavy/serious
+// users are nudged to bring their own key (free Gemini or their own Claude).
+const TRY = { model: 'claude-haiku-4-5-20251001', maxTokens: 1200, perIpPerDay: 5, globalPerDay: 300, maxInputChars: 8000 };
+
+function tryConfigured(env) { return !!(env && env.ANTHROPIC_API_KEY && env.TRY_KV && env.TRY_ENABLED !== 'false'); }
+function tryStatus(env) {
+  return jsonResponse({ enabled: tryConfigured(env), perIpPerDay: TRY.perIpPerDay, model: 'Claude Haiku', note: tryConfigured(env) ? 'A few free Claude runs per day, on the house. Bring your own key for more.' : 'Free Claude trial not configured on this deployment.' });
+}
+async function handleTry(request, env) {
+  if (!tryConfigured(env)) return jsonResponse({ error: 'disabled', message: 'Free Claude trial is not enabled here. Use the free Gemini key or your own key.' }, 503);
+
+  const ip = request.headers.get('cf-connecting-ip') || 'anon';
+  const day = new Date().toISOString().slice(0, 10);
+  const ipKey = `try:ip:${day}:${ip}`, globalKey = `try:global:${day}`;
+  const [ipN, globalN] = await Promise.all([env.TRY_KV.get(ipKey), env.TRY_KV.get(globalKey)]);
+  if (+(globalN || 0) >= TRY.globalPerDay) return jsonResponse({ error: 'global_cap', message: "The free Claude trial has hit today's shared limit. Grab a free Gemini key (no card) — it's unlimited." }, 429);
+  if (+(ipN || 0) >= TRY.perIpPerDay) return jsonResponse({ error: 'ip_cap', message: `That's your ${TRY.perIpPerDay} free Claude runs for today. Add a free Gemini key or your own key to keep going.` }, 429);
+
+  let payload;
+  try { payload = await request.json(); } catch { return jsonResponse({ error: 'bad_json' }, 400); }
+  const prompt = String(payload.prompt || '').slice(0, TRY.maxInputChars);
+  const system = String(payload.system || '').slice(0, 12000);
+  if (!prompt.trim()) return jsonResponse({ error: 'no_prompt' }, 400);
+
+  // Count first (fail-safe: a hammered endpoint can't exceed the cap even if a call errors).
+  await Promise.all([
+    env.TRY_KV.put(ipKey, String(+(ipN || 0) + 1), { expirationTtl: 172800 }),
+    env.TRY_KV.put(globalKey, String(+(globalN || 0) + 1), { expirationTtl: 172800 }),
+  ]);
+
+  const res = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json', 'x-api-key': env.ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01' },
+    body: JSON.stringify({ model: TRY.model, max_tokens: TRY.maxTokens, ...(system ? { system } : {}), messages: [{ role: 'user', content: prompt }] }),
+  });
+  if (!res.ok) return jsonResponse({ error: 'upstream', message: 'Claude is busy — try again, or use your own key.' }, 502);
+  const data = await res.json();
+  const text = (data.content || []).map((c) => c.text || '').join('');
+  const remaining = Math.max(0, TRY.perIpPerDay - (+(ipN || 0) + 1));
+  return jsonResponse({ text, model: 'claude-haiku', remaining });
+}
+
 export default {
-  async fetch(request) {
+  async fetch(request, env) {
     if (request.method === 'OPTIONS') return new Response(null, { headers: CORS });
     const url = new URL(request.url);
+    // Capped, sponsored "try Claude free, no key" endpoint (off until configured — see handleTry).
+    if (url.pathname === '/try') {
+      if (request.method === 'GET') return jsonResponse(tryStatus(env));   // frontend probes this to show/hide the button
+      if (request.method === 'POST') return handleTry(request, env);
+      return new Response('Method Not Allowed', { status: 405, headers: CORS });
+    }
     if ((request.method === 'GET' || request.method === 'HEAD') && url.pathname.startsWith('/v1')) {
       return handleRest(url);
     }

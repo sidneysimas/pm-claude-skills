@@ -31,6 +31,11 @@
   .jcard .jdoc { position: absolute; top: 12px; right: 13px; font-size: 11px; color: var(--muted); }
   .jobs-cta { text-align: center; margin: 34px 0 10px; }
   .jobs-cta a { display: inline-block; }
+  .freekey { max-width: 720px; margin: 0 auto 4px; background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 4px 16px; }
+  .freekey summary { cursor: pointer; font-size: 13.5px; font-weight: 600; padding: 9px 0; color: var(--accent-2); }
+  .freekey-body { font-size: 13px; color: var(--muted); line-height: 1.6; padding-bottom: 10px; }
+  .freekey-body ol { padding-left: 18px; margin: 6px 0; } .freekey-body li { margin: 7px 0; }
+  .freekey-foot { margin: 8px 0 0; font-size: 12.5px; opacity: .85; }
 </style>
 </head>
 <body>
@@ -45,7 +50,19 @@
     <h1>Land the job — one guided toolkit</h1>
     <p>Every step of a real search, in order: sharpen your materials, target the right roles, reach out, ace the interview, and negotiate. Each tool runs in the playground with the structure a senior pro uses.</p>
   </div>
-  <div class="jobs-note">🔒 Runs in your browser — start <strong>free</strong> with a Google AI Studio key or the in-browser model (no card), or bring your own Claude/OpenAI key. Nothing is stored on a server. Export any result as a <strong>designed PDF</strong>.</div>
+  <div class="jobs-note">🔒 Runs in your browser. Nothing is stored on a server. Export any result as a <strong>designed PDF</strong>.</div>
+
+  <details class="freekey">
+    <summary>🔑 No API key? Here are 3 free ways to run — pick one</summary>
+    <div class="freekey-body">
+      <ol>
+        <li><b>Free Google key (no credit card, ~30s)</b> — open <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a> → <em>Create API key</em> → copy it. On the <a href="index.html">Playground</a>, the provider is already set to <b>Gemini (free)</b> — paste the key once and every tool runs. Generous free tier, no card ever.</li>
+        <li><b>No key at all</b> — on the Playground, switch the provider to <b>In-browser</b>. A small model runs entirely on your device — private, free, nothing to sign up for. (Lower quality than the hosted models, but great for a first try.)</li>
+        <li><b>Use free Claude.ai</b> — on any skill, click <b>“Copy for Claude”</b>, then paste it into a free <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a> chat. Real Claude, no API key.</li>
+      </ol>
+      <p class="freekey-foot">Prefer your own <b>Claude / OpenAI</b> key? Just pick it in the provider dropdown. Your key stays in your browser — never sent to us.</p>
+    </div>
+  </details>
 
   <div id="stages"></div>
 
