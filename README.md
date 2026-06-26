@@ -88,6 +88,23 @@ A community-built library of professional skills for every field — product man
 
 ---
 
+## 📄 Good content deserves good paper
+
+It's not just text — the playground exports every result as a **professionally typeset PDF** (pick a theme; it even tints to your brand colour). Here's the *same skills* producing real, designed documents — **click any to open the PDF:**
+
+<table>
+  <tr>
+    <td width="25%" align="center"><a href="web/docs-assets/samples/resume.pdf"><img src="web/docs-assets/samples/resume.png" alt="Resume — Paper theme" /></a><br /><b><a href="skills/resume">Resume</a></b><br /><sub>Paper theme</sub></td>
+    <td width="25%" align="center"><a href="web/docs-assets/samples/one-pager.pdf"><img src="web/docs-assets/samples/one-pager.png" alt="One-Pager — Modern theme" /></a><br /><b><a href="skills/one-pager">One-Pager</a></b><br /><sub>Modern theme</sub></td>
+    <td width="25%" align="center"><a href="web/docs-assets/samples/cover-letter.pdf"><img src="web/docs-assets/samples/cover-letter.png" alt="Cover Letter — Paper theme" /></a><br /><b><a href="skills/cover-letter">Cover Letter</a></b><br /><sub>Paper theme</sub></td>
+    <td width="25%" align="center"><a href="web/docs-assets/samples/prd.pdf"><img src="web/docs-assets/samples/prd.png" alt="PRD — Technical theme" /></a><br /><b><a href="skills/prd-template">PRD</a></b><br /><sub>Technical theme</sub></td>
+  </tr>
+</table>
+
+> Generate yours: run a skill in the [Playground](https://mohitagw15856.github.io/pm-claude-skills/), then **Download → PDF · Paper / Modern / Technical**. Personal documents live in the [`pm-personal`](#️-all-244-skills) bundle (résumé, cover letter, bio, LinkedIn, portfolio, one-pager).
+
+---
+
 ## 📄 One-page cheatsheet
 
 <details>
