@@ -1,9 +1,3 @@
-<p align="center">
-  <a href="https://mohitagw15856.github.io/pm-claude-skills/">
-    <img src="web/docs-assets/professions-hero.png" width="100%" alt="PM Skills — 240+ open-source AI skills, one for every profession: Product Management, Engineering, Marketing & GTM, Customer Success, Data & Analytics, Leadership & People, Design & UX, Business & Strategy, Legal, Finance, Founders & Startups, Educators, HR, Sales, Operations, Research & Healthcare, Figma, Social Media, Writers & Content, and Cross-Profession. The structure a senior pro uses, as portable SKILL.md files. Works with Claude, ChatGPT, Gemini, Cursor, Codex & Hermes." />
-  </a>
-</p>
-
 # 🧠 PM Skills — 244 Professional Agent Skills for Claude, ChatGPT, Gemini, Cursor, Codex & Hermes
 
 [![Stars](https://img.shields.io/github/stars/mohitagw15856/pm-claude-skills?style=social)](https://github.com/mohitagw15856/pm-claude-skills/stargazers)
@@ -31,6 +25,12 @@
 <p align="center">
   <a href="https://mohitagw15856.github.io/pm-claude-skills/">
     <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=24&pause=900&color=D97757&center=true&vCenter=true&width=720&lines=244+pro+AI+skills;PRDs%2C+roadmaps%2C+launches+%E2%80%94+done+right;Run+any+one+free+in+your+browser" alt="PM Skills" />
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://mohitagw15856.github.io/pm-claude-skills/">
+    <img src="web/docs-assets/professions-hero.png" width="100%" alt="PM Skills — 240+ open-source AI skills, one for every profession: Product Management, Engineering, Marketing & GTM, Customer Success, Data & Analytics, Leadership & People, Design & UX, Business & Strategy, Legal, Finance, Founders & Startups, Educators, HR, Sales, Operations, Research & Healthcare, Figma, Social Media, Writers & Content, and Cross-Profession. The structure a senior pro uses, as portable SKILL.md files. Works with Claude, ChatGPT, Gemini, Cursor, Codex & Hermes." />
   </a>
 </p>
 
