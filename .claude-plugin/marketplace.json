@@ -9,6 +9,14 @@
   },
   "plugins": [
     {
+      "name": "pm-documents",
+      "description": "Produce real, editable Office files (not markdown): Excel Model (live formulas), Slide Deck (.pptx), and Word Document (.docx). Generated via openpyxl / python-pptx / python-docx — needs a code-execution environment (Claude Code, API code tool, or Claude.ai).",
+      "version": "1.0.0",
+      "category": "productivity",
+      "source": "./plugins/pm-documents",
+      "homepage": "https://github.com/mohitagw15856/pm-claude-skills"
+    },
+    {
       "name": "pm-comms",
       "description": "Communication & influence skills everyone needs: Difficult Conversation, Giving Feedback, Managing Up, Executive Presence, Saying No, and a Persuasion Brief. The soft skills that decide careers.",
       "version": "1.0.0",
