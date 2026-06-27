@@ -6,13 +6,30 @@ This repository contains Claude Skill files — plain markdown instruction files
 
 That said, security matters here in two specific ways: **skill file safety** and **prompt injection risks**.
 
+## What this plugin does / does NOT do (trust at a glance)
+
+> A plain-language summary for anyone installing or reviewing this plugin (e.g. the
+> Anthropic plugin directory). The whole library is open-source and auditable.
+
+**It does:**
+- Ship **plain-markdown `SKILL.md` instruction files** + a handful of **pure-stdlib Python helper scripts** (calculators/validators in `scripts/` folders).
+- Run those scripts **only when you explicitly invoke them**, with **no third-party dependencies** and **no network access**.
+
+**It does NOT:**
+- ❌ Bundle or require any opaque binary, closed-source component, or auto-updating remote code.
+- ❌ Send your inputs, outputs, prompts, or API keys anywhere — there is no telemetry of content. (The optional hosted MCP / playground are separate, open-source, and send your prompt only to the model provider *you* choose, with *your* key.)
+- ❌ Execute code, make network calls, or touch your filesystem on its own from a skill.
+- ❌ Contain prompt-injection, jailbreak, or data-exfiltration instructions — CI enforces this.
+
+**Automated guardrails:** every change runs **[SkillCheck](.github/workflows/skillcheck.yml)** (structure/safety lint) and a **[security audit](.github/workflows/skill-audit.yml)** in CI; the **[`skill-security-auditor`](skills/skill-security-auditor/)** skill scans any `SKILL.md` for injection / exfiltration / privilege-escalation patterns. MIT licensed.
+
 ## Supported Versions
 
 | Version | Supported |
 |---|---|
-| v20.x (latest) | ✅ Active |
-| v18.x – v19.x | ✅ Security fixes only |
-| < v18.0.0 | ❌ No longer supported |
+| Latest release | ✅ Active |
+| Previous minor | ✅ Security fixes only |
+| Older | ❌ Please upgrade |
 
 Because skills are plain markdown, "support" means we review and correct any reported
 safety issue (prompt injection, unsafe instructions) in the listed versions.
