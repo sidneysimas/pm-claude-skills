@@ -3,7 +3,7 @@
 > Auto-generated from `skills/*/SKILL.md` by `scripts/build-exports.mjs`.
 > **Do not edit these files by hand** — edit the source skill and regenerate.
 
-256 skills exported. Copy a `SYSTEM_PROMPT.md` into the tool to use it.
+261 skills exported. Copy a `SYSTEM_PROMPT.md` into the tool to use it.
 
 | Skill | Bundle | Path |
 |---|---|---|
@@ -181,6 +181,7 @@
 | PR Description Writer | `pm-engineering` | `pm-engineering/pr-description-writer/SYSTEM_PROMPT.md` |
 | PRD Template | `pm-essentials` | `pm-essentials/prd-template/SYSTEM_PROMPT.md` |
 | Press Release | `pm-cross` | `pm-cross/press-release/SYSTEM_PROMPT.md` |
+| Pricing Calculator | `pm-calculators` | `pm-calculators/pricing-calculator/SYSTEM_PROMPT.md` |
 | Pricing Strategy | `pm-planning` | `pm-planning/pricing-strategy/SYSTEM_PROMPT.md` |
 | Privacy Policy Drafter | `pm-legal` | `pm-legal/privacy-policy-drafter/SYSTEM_PROMPT.md` |
 | Process Documentation | `pm-operations` | `pm-operations/process-documentation/SYSTEM_PROMPT.md` |
@@ -211,9 +212,12 @@
 | Risk Register | `pm-operations` | `pm-operations/risk-register/SYSTEM_PROMPT.md` |
 | Roadmap Narrative | `pm-planning` | `pm-planning/roadmap-narrative/SYSTEM_PROMPT.md` |
 | Roadmap Presentation | `pm-planning` | `pm-planning/roadmap-presentation/SYSTEM_PROMPT.md` |
+| ROI Estimator | `pm-calculators` | `pm-calculators/roi-estimator/SYSTEM_PROMPT.md` |
 | Rubric Builder | `pm-education` | `pm-education/rubric-builder/SYSTEM_PROMPT.md` |
 | Runbook Writer | `pm-engineering` | `pm-engineering/runbook-writer/SYSTEM_PROMPT.md` |
+| Runway Calculator | `pm-calculators` | `pm-calculators/runway-calculator/SYSTEM_PROMPT.md` |
 | Runway Planner | `pm-founders` | `pm-founders/runway-planner/SYSTEM_PROMPT.md` |
+| SaaS Metrics | `pm-calculators` | `pm-calculators/saas-metrics/SYSTEM_PROMPT.md` |
 | Salary Negotiation | `pm-career` | `pm-career/salary-negotiation/SYSTEM_PROMPT.md` |
 | Sales Battlecard | `pm-sales` | `pm-sales/sales-battlecard/SYSTEM_PROMPT.md` |
 | Sales Forecasting Model | `pm-sales` | `pm-sales/sales-forecasting-model/SYSTEM_PROMPT.md` |
@@ -252,6 +256,7 @@
 | Technical Spec Template | `pm-delivery` | `pm-delivery/technical-spec-template/SYSTEM_PROMPT.md` |
 | Test Strategy Document | `pm-engineering` | `pm-engineering/test-strategy-doc/SYSTEM_PROMPT.md` |
 | Thumbnail Creator Skill (via Gemini) | `pm-writers` | `pm-writers/thumbnail-creator/SYSTEM_PROMPT.md` |
+| Unit Economics | `pm-calculators` | `pm-calculators/unit-economics/SYSTEM_PROMPT.md` |
 | User Interview Synthesis | `pm-discovery` | `pm-discovery/user-interview-synthesis/SYSTEM_PROMPT.md` |
 | User Research Synthesis | `pm-essentials` | `pm-essentials/user-research-synthesis/SYSTEM_PROMPT.md` |
 | User Story Writer | `pm-delivery` | `pm-delivery/user-story-writer/SYSTEM_PROMPT.md` |

@@ -1,0 +1,10 @@
+{
+  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
+  "name": "pm-calculators",
+  "version": "1.0.0",
+  "description": "Executable business calculators — each ships a stdlib script: Unit Economics (LTV/CAC), SaaS Metrics (NRR/quick ratio), Runway (default alive/dead), Pricing, and ROI/NPV. Verifiable math, not vibes.",
+  "author": { "name": "Mohit Aggarwal", "email": "mohit15856@gmail.com" },
+  "homepage": "https://github.com/mohitagw15856/pm-claude-skills",
+  "license": "MIT",
+  "keywords": ["unit-economics", "saas-metrics", "runway", "pricing", "roi", "npv", "finance", "calculator"]
+}

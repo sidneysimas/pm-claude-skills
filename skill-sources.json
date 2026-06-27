@@ -1,6 +1,9 @@
 {
   "_comment": "Framework attribution: the canonical method/author each skill encodes. Surfaced as a 'Based on' line on skill pages, the playground, and the catalog. Only skills with a genuine, well-known source are listed; the rest are intentionally omitted rather than given a fabricated citation.",
   "sources": {
+    "unit-economics": "SaaS unit economics — David Skok / for Entrepreneurs (margin LTV, LTV:CAC, payback)",
+    "runway-calculator": "Default Alive or Dead — Paul Graham (Y Combinator)",
+    "saas-metrics": "SaaS metrics definitions (Bessemer / a16z / KeyBanc)",
     "value-proposition": "Value Proposition Design (Osterwalder) + April Dunford positioning",
     "sales-page": "Direct-response copywriting — PAS, unique mechanism, offer stack, risk reversal",
     "brag-doc": "Brag-document practice (Julia Evans)",

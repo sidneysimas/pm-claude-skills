@@ -9,6 +9,14 @@
   },
   "plugins": [
     {
+      "name": "pm-calculators",
+      "description": "Executable business calculators — each ships a stdlib script: Unit Economics (LTV/CAC), SaaS Metrics (NRR/quick ratio), Runway (default alive/dead), Pricing, and ROI/NPV. Verifiable math, not vibes.",
+      "version": "1.0.0",
+      "category": "productivity",
+      "source": "./plugins/pm-calculators",
+      "homepage": "https://github.com/mohitagw15856/pm-claude-skills"
+    },
+    {
       "name": "pm-copy",
       "description": "Copywriting & conversion skills: Value Proposition, Landing Page Copy, Sales Page, Ad Copy, Cold Email, Headline Options, and Email Sequence. Words that convert — pairs with the themed PDF export.",
       "version": "1.0.0",
